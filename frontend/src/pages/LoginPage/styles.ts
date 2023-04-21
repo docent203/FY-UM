@@ -44,5 +44,11 @@ export const HrStyle = styled.hr`
 export const KakaoBtn = styled.img.attrs({
   src: `${kakaoImg}`,
 })`
-  width: 100%;
+  width: 90%;
+  cursor: pointer;
+
+  &:hover {
+    width: 100%;
+    height: 100%;
+  }
 `;
