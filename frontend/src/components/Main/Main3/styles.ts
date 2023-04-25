@@ -38,14 +38,14 @@ export const FontStyle = styled.div`
   &.exp {
     font-weight: 300;
     font-size: 24px;
-    line-height: 30px;
+    line-height: 25px;
     writing-mode: vertical-rl;
     position: absolute;
     right: 5%;
     top: 13%;
 
     @media (max-width: 768px) {
-      top: 12.5%;
+      top: 15%;
       right: 15%;
     }
   }

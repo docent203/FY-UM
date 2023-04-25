@@ -9,8 +9,8 @@ import {
 } from "../styles";
 import { Main2Img1Style, Main2Img2Style, FontStyle } from "./styles";
 
-import main2Img1 from "../../../assets/images/main3Img1.png";
-import main2Img2 from "../../../assets/images/main3Img2.png";
+import main3Img1 from "../../../assets/images/main3Img1.png";
+import main3Img2 from "../../../assets/images/main3Img2.png";
 
 const ThirdMain = () => {
   const navigate = useNavigate();
@@ -32,9 +32,9 @@ const ThirdMain = () => {
             view
             <RightArrowIcStyle />
           </FontStyle>
-          <Main2Img1Style src={main2Img1} />
+          <Main2Img1Style src={main3Img1} />
           <FontStyle className="title">Collection.</FontStyle>
-          <Main2Img2Style src={main2Img2} />
+          <Main2Img2Style src={main3Img2} />
         </MainGridItems>
       </MainGridContainer>
     </BackgroundStyle>
