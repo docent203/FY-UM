@@ -1,13 +1,21 @@
+import { useNavigate } from "react-router-dom";
 import {
   DetailContainer,
   BackgroundImg,
   ContentContainer,
   Title,
   Content,
+  GoBackBtn,
+  LeftArrowIcStyle,
+  GoBackBtnContent,
 } from "./styles";
 import detailImg from "../../assets/dummyImg/starrynight.png";
 
 const DetailPage = () => {
+  const navigate = useNavigate();
+  const moveToList = () => {
+    navigate("/artlist");
+  };
   return (
     <DetailContainer>
       <BackgroundImg src={detailImg} />
@@ -19,6 +27,11 @@ const DetailPage = () => {
           그림이다. 1889년 생레미의 정신병원에서 고흐는 정신적 질환으로 인한
           고통을 떠올려 그림 속의 소용돌이로 묘사했다.
         </Content>
+        <GoBackBtn onClick={moveToList}>
+          <LeftArrowIcStyle />
+          &nbsp;&nbsp;&nbsp;
+          <GoBackBtnContent>Go Back</GoBackBtnContent>
+        </GoBackBtn>
       </ContentContainer>
     </DetailContainer>
   );
