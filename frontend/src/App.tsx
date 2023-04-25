@@ -15,6 +15,7 @@ import {
   WishListPage,
   IntroPage,
   KakaoHandle,
+  TestPage
 } from "../src/pages/index";
 
 import Header from "./components/common/Header";
@@ -41,6 +42,9 @@ function App() {
         <Route path="/list/:id" element={<ListPage />} />
         <Route path="/detail" element={<DetailPage />} />
         <Route path="/drawing" element={<DrawingPage />} />
+
+        {/* 테스트 페이지 */}
+        <Route path="/test" element={<TestPage></TestPage>} />
       </Routes>
     </BrowserRouter>
   );
