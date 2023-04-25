@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { black, white } from "../../styles/colors";
 import { ReactComponent as LeftArrowIc } from "../../assets/icon/leftArrowIc.svg";
+import { ReactComponent as EmptyBookmark } from "../../assets/icon/empty_bookmark.svg";
+import { ReactComponent as EmptyFrame } from "../../assets/icon/empty_frame.svg";
 
 interface BackgroundImgProps {
   src: string;
@@ -12,7 +14,6 @@ export const DetailContainer = styled.div`
   height: 100vh;
   position: relative;
   background-color: ${black};
-  /* overflow-y: hidden; */
 `;
 
 export const BackgroundImg = styled.img<BackgroundImgProps>`
@@ -77,4 +78,20 @@ export const DescriptionBtn = styled.div`
 export const DescriptionP = styled.p`
   color: ${white};
   font-size: 1.5vw;
+`;
+
+export const MarkContainer = styled.div`
+  position: absolute;
+  bottom: 1.5vw;
+  right: 3vw;
+`;
+
+export const FrameIcStyle = styled(EmptyFrame)`
+  width: 2vw;
+  fill: ${white};
+  margin-right: 1vw;
+`;
+export const BookMarkIcStyle = styled(EmptyBookmark)`
+  width: 1.5vw;
+  fill: ${white};
 `;

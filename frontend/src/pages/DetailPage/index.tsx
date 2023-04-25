@@ -11,6 +11,9 @@ import {
   GoBackBtnContent,
   DescriptionBtn,
   DescriptionP,
+  MarkContainer,
+  FrameIcStyle,
+  BookMarkIcStyle,
 } from "./styles";
 import detailImg from "../../assets/dummyImg/starrynight.png";
 
@@ -52,6 +55,10 @@ const DetailPage = () => {
           <DescriptionP>Description Off.</DescriptionP>
         )}
       </DescriptionBtn>
+      <MarkContainer>
+        <FrameIcStyle />
+        <BookMarkIcStyle />
+      </MarkContainer>
     </DetailContainer>
   );
 };
