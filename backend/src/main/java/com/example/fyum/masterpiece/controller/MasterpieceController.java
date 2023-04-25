@@ -14,23 +14,31 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/paintings")
 public class MasterpieceController {
 
-    private MasterpieceService masterpieceService;
+    private final MasterpieceService masterpieceService;
 
     // 작가 목록
     @GetMapping("/painters")
-    public ResponseEntity<?> getPainters(@RequestParam(required = false, defaultValue = "1") int page) {
-        return null;
+    public ResponseEntity<Page<CategoryResponseDto>> getPainters(@RequestParam(required = false, defaultValue = "1") int page) {
+        page--;
+        Page<CategoryResponseDto> painters = masterpieceService.getPainters(page);
+        return new ResponseEntity<>(painters, HttpStatus.OK);
     }
 
     // 작가별 작품 리스트
     @GetMapping("/painters/{painterId}")
     public ResponseEntity<?> getMasterpiecesByPainter(@PathVariable int painterId, @RequestParam(required = false, defaultValue = "1") int page) {
+        page = page-=1;
+        masterpieceService.getMasterpiecesByPainter(painterId, page);
+
         return null;
     }
 
     // 테마 목록
     @GetMapping("/themes")
-    public ResponseEntity<?> getThemes() {
+    public ResponseEntity<?> getThemes(@RequestParam(required = false, defaultValue = "1") int page) {
+        page--;
+        Page<CategoryResponseDto> themes = masterpieceService.getThemes(page);
+
         return null;
     }
 
