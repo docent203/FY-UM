@@ -8,7 +8,7 @@ export const BackgroundStyle = styled.div`
   width: 100%;
   background-color: ${black};
   position: fixed;
-  z-index: 9999;
+  z-index: 999999;
 `;
 
 export const InvisibleHeader = styled.div`
