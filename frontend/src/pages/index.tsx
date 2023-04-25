@@ -12,7 +12,7 @@ import RecommendationPage from "./RecommendationPage";
 import SurveyPage from "./SurveyPage";
 import WishListPage from "./WishListPage";
 import IntroPage from "./IntroPage";
-import KakaoHandle from "../components/auth/auth";
+import KakaoHandle from "../components/auth/Auth";
 
 export {
   ArtListPage,
