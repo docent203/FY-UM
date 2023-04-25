@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PainterRepository extends JpaRepository<Painter, Integer> {
+
     Page<Painter> findAll(Pageable pageable);
 
 }
