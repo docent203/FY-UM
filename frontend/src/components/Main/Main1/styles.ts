@@ -42,6 +42,21 @@ export const Main1Img1Container = styled.div`
     height: 70%;
     padding-top: 0px;
   }
+
+  animation: fadeIn1 1s ease-out forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+
+  @keyframes fadeIn1 {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const Main1Img1Style2 = styled.img`

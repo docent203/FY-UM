@@ -64,13 +64,13 @@ const MainPage = () => {
           } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
             //현재 3페이지
             outerDivRef.current.scrollTo({
-              top: pageHeight,
+              top: 0,
               behavior: "smooth",
             });
           } else {
             // 현재 4페이지
             outerDivRef.current.scrollTo({
-              top: pageHeight * 3,
+              top: 0,
               behavior: "smooth",
             });
           }
