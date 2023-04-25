@@ -10,6 +10,12 @@ export const Main1Img1Style = styled.img`
   position: absolute;
   z-index: 2;
 
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
   @media (max-width: 768px) {
     position: static;
     width: 100%;
@@ -17,6 +23,40 @@ export const Main1Img1Style = styled.img`
     padding-top: 0px;
   }
 `;
+
+////
+
+export const Main1Img1Container = styled.div`
+  width: 35%;
+  min-width: 300px;
+  height: 60%;
+  top: 13.5%;
+
+  position: absolute;
+  z-index: 2;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    position: static;
+    width: 100%;
+    height: 70%;
+    padding-top: 0px;
+  }
+`;
+
+export const Main1Img1Style2 = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+////
 
 export const Main1Img2Style = styled.img`
   width: 70%;

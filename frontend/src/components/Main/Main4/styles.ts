@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { pink, white } from "../../../styles/colors";
 
 export const Main2Img1Style = styled.img`
-  width: 45%;
+  width: 43%;
   min-width: 300px;
   height: 78%;
   top: 13%;
@@ -53,7 +53,7 @@ export const FontStyle = styled.div`
 
   &.title {
     font-weight: 700;
-    font-size: 6.8vw;
+    font-size: 6.4vw;
     position: absolute;
     bottom: 6%;
     z-index: 3;

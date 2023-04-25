@@ -142,8 +142,8 @@ export const MenuListFontStyle = styled.div`
 `;
 
 export const CloseIcStyle = styled(CloseIc)`
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   fill: ${white};
   margin-right: 40px;
   margin-top: 15px;
