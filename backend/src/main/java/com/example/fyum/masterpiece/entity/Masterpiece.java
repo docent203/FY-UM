@@ -12,6 +12,7 @@ import lombok.Getter;
 @DiscriminatorValue("MP")
 @Entity
 public class Masterpiece extends Painting {
+
     private String titleKr;
     private String titleOrigin;
     private String paintedAt;
