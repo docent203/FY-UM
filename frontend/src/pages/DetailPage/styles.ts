@@ -21,12 +21,15 @@ export const DetailContainer = styled.div`
 
 export const BackgroundImg = styled.img<BackgroundImgProps>`
   width: 100vw;
-  /* height: 100vh; */
   position: absolute;
   object-fit: fill;
   filter: brightness(
     ${(props) => (props.description === true ? "40%" : "100%")}
   );
+
+  @media (max-width: 768px) {
+    margin-top: 25%;
+  }
 `;
 
 export const ContentContainer = styled.div`
@@ -34,6 +37,13 @@ export const ContentContainer = styled.div`
   width: 60%;
   top: 5%;
   left: 15%;
+
+  @media (max-width: 768px) {
+    margin-top: 15%;
+    width: 80%;
+    left: 10%;
+    line-height: 2.5vh;
+  }
 `;
 
 export const Title = styled.p`
@@ -76,6 +86,11 @@ export const DescriptionBtn = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    left: 3vw;
+    bottom: 1.5vh;
+  }
 `;
 
 export const DescriptionP = styled.p`
@@ -86,27 +101,46 @@ export const DescriptionP = styled.p`
 
 export const MarkContainer = styled.div`
   position: absolute;
-  bottom: 1.5vw;
+  bottom: 0.1vh;
   right: 3vw;
 `;
 
 export const EmptyFrameIcStyle = styled(EmptyFrame)`
   width: 2vw;
   fill: ${white};
-  margin-right: 1vw;
+  margin-right: 2vw;
+
+  @media (max-width: 768px) {
+    width: 4vw;
+    margin-right: 2vw;
+  }
 `;
 
 export const FullFrameIcStyle = styled(FullFrame)`
   width: 2vw;
   margin-right: 1vw;
+
+  @media (max-width: 768px) {
+    width: 4vw;
+    margin-right: 2vw;
+  }
 `;
+
 export const EmptyBookMarkIcStyle = styled(EmptyBookmark)`
   width: 1.5vw;
   fill: ${white};
+
+  @media (max-width: 768px) {
+    width: 3vw;
+  }
 `;
 
 export const FullBookMarkIcStyle = styled(FullBookmark)`
   width: 1.5vw;
+
+  @media (max-width: 768px) {
+    width: 3vw;
+  }
 `;
 
 export const FixedContainer = styled.div`
