@@ -1,4 +1,6 @@
+import Collection from "../../components/Collection";
+
 const CollectionPage = () => {
-  return <></>;
+  return <Collection></Collection>;
 };
 export default CollectionPage;
