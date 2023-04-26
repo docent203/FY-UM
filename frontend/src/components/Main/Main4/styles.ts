@@ -109,12 +109,10 @@ export const FontStyle = styled.div<{ isanimation?: string }>`
     align-items: center;
     justify-content: end;
 
-    &:hover {
-      cursor: pointer;
-      color: ${pink[200]};
-
-      &:not(:hover) {
-        color: ${white};
+    @media (hover: hover) {
+      &:hover {
+        cursor: pointer;
+        color: ${pink[200]};
       }
     }
 
