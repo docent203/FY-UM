@@ -39,9 +39,9 @@ public class SecurityConfig {
                 .antMatchers("/members/oauth/token").permitAll()
                 .anyRequest().authenticated()
 
-//                .and()
-//                .exceptionHandling()
-//                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
+                .and()
+                .exceptionHandling()
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
 
                 .and()
                 .sessionManagement()
