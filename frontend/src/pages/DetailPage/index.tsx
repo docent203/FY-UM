@@ -12,10 +12,14 @@ import {
   DescriptionBtn,
   DescriptionP,
   MarkContainer,
-  FrameIcStyle,
-  BookMarkIcStyle,
+  EmptyFrameIcStyle,
+  FullFrameIcStyle,
+  EmptyBookMarkIcStyle,
+  FullBookMarkIcStyle,
+  FixedContainer,
 } from "./styles";
 import detailImg from "../../assets/dummyImg/starrynight.png";
+import longImg from "../../assets/images/main2Img1.png";
 
 const DetailPage = () => {
   const navigate = useNavigate();
@@ -24,14 +28,24 @@ const DetailPage = () => {
   };
 
   const [description, setDescription] = useState(true);
+  const [frame, setFrame] = useState(false);
+  const [bookmark, setBookmark] = useState(false);
 
   const changeState = () => {
     setDescription(!description);
   };
-  console.log(description);
+
+  const changeFrame = () => {
+    setFrame(!frame);
+  };
+
+  const changeBookmark = () => {
+    setBookmark(!bookmark);
+  };
+  console.log(frame);
   return (
     <DetailContainer>
-      <BackgroundImg src={detailImg} description={description} />
+      <BackgroundImg src={longImg} description={description} />
       {description === true ? (
         <ContentContainer>
           <Title>The Starry Night</Title>
@@ -48,17 +62,29 @@ const DetailPage = () => {
           </GoBackBtn>
         </ContentContainer>
       ) : null}
-      <DescriptionBtn onClick={changeState}>
+      <FixedContainer>
+        <DescriptionBtn onClick={changeState}>
+          {description === true ? (
+            <DescriptionP>Description On.</DescriptionP>
+          ) : (
+            <DescriptionP>Description Off.</DescriptionP>
+          )}
+        </DescriptionBtn>
         {description === true ? (
-          <DescriptionP>Description On.</DescriptionP>
-        ) : (
-          <DescriptionP>Description Off.</DescriptionP>
-        )}
-      </DescriptionBtn>
-      <MarkContainer>
-        <FrameIcStyle />
-        <BookMarkIcStyle />
-      </MarkContainer>
+          <MarkContainer>
+            {frame === false ? (
+              <EmptyFrameIcStyle onClick={changeFrame} />
+            ) : (
+              <FullFrameIcStyle onClick={changeFrame} />
+            )}
+            {bookmark === false ? (
+              <EmptyBookMarkIcStyle onClick={changeBookmark} />
+            ) : (
+              <FullBookMarkIcStyle onClick={changeBookmark} />
+            )}
+          </MarkContainer>
+        ) : null}
+      </FixedContainer>
     </DetailContainer>
   );
 };
