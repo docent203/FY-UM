@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   CollectionContainer,
   PainterContainer,
@@ -15,24 +17,30 @@ import {
 const Collection = () => {
   return (
     <CollectionContainer>
-      <PainterContainer>
-        <PainterText>
-          <ImageText>Painter.</ImageText>
-        </PainterText>
-        <PainterNoBackContainer></PainterNoBackContainer>
-      </PainterContainer>
-      <ArtTrendContainer>
-        <ArtTrendNoBackContainer></ArtTrendNoBackContainer>
-        <ArtTrendText>
-          <ImageText>Art Trend.</ImageText>
-        </ArtTrendText>
-      </ArtTrendContainer>
-      <ThemeContainer>
-        <ThemeText>
-          <ImageText>Theme.</ImageText>
-        </ThemeText>
-        <ThemeNoBackContainer></ThemeNoBackContainer>
-      </ThemeContainer>
+      <Link to="/list/painter">
+        <PainterContainer>
+          <PainterText>
+            <ImageText>Painter.</ImageText>
+          </PainterText>
+          <PainterNoBackContainer></PainterNoBackContainer>
+        </PainterContainer>
+      </Link>
+      <Link to="/list/arttrend">
+        <ArtTrendContainer>
+          <ArtTrendNoBackContainer></ArtTrendNoBackContainer>
+          <ArtTrendText>
+            <ImageText>Art Trend.</ImageText>
+          </ArtTrendText>
+        </ArtTrendContainer>
+      </Link>
+      <Link to="/list/theme">
+        <ThemeContainer>
+          <ThemeText>
+            <ImageText>Theme.</ImageText>
+          </ThemeText>
+          <ThemeNoBackContainer></ThemeNoBackContainer>
+        </ThemeContainer>
+      </Link>
     </CollectionContainer>
   );
 };
