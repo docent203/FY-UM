@@ -110,3 +110,15 @@ export const MainGridFontItem = styled.div`
     justify-content: center;
   }
 `;
+
+export const MainImgStyle = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
