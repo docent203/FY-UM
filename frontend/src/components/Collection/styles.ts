@@ -14,7 +14,7 @@ export const CollectionContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   cursor: pointer;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
   }
@@ -32,7 +32,7 @@ export const PainterContainer = styled.div`
   &:hover {
     filter: brightness(100%);
   }
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     position: relative;
     grid-column: 1/1;
     grid-row: 1/2;
@@ -43,7 +43,7 @@ export const PainterContainer = styled.div`
 `;
 export const PainterNoBackContainer = styled.div`
   display: none;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     display: inline-block;
     position: absolute;
     background-image: url(${PainterNoBackImg});
@@ -67,7 +67,7 @@ export const ArtTrendContainer = styled.div`
   &:hover {
     filter: brightness(100%);
   }
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     position: relative;
 
     grid-column: 1/1;
@@ -79,7 +79,7 @@ export const ArtTrendContainer = styled.div`
 `;
 export const ArtTrendNoBackContainer = styled.div`
   display: none;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     display: inline-block;
     position: absolute;
     background-image: url(${ArtTrendNoBackImg});
@@ -103,7 +103,7 @@ export const ThemeContainer = styled.div`
   &:hover {
     filter: brightness(100%);
   }
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     grid-column: 1/1;
     grid-row: 3/4;
     background-image: none;
@@ -113,7 +113,7 @@ export const ThemeContainer = styled.div`
 `;
 export const ThemeNoBackContainer = styled.div`
   display: none;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     display: inline-block;
     position: absolute;
     background-image: url(${ThemeNoBackImg});
@@ -130,7 +130,7 @@ export const ImageText = styled.div`
   color: ${white};
   font-weight: 700;
   font-size: 4vw;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     font-size: 8vw;
   }
 `;
@@ -139,7 +139,7 @@ export const PainterText = styled.div`
   position: absolute;
   left: 30%;
   bottom: 10%;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     bottom: 25%;
     left: 15%;
   }
@@ -149,7 +149,7 @@ export const ArtTrendText = styled.div`
   position: absolute;
   left: 20%;
   bottom: 10%;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     bottom: 25%;
     left: 50%;
   }
@@ -158,7 +158,7 @@ export const ThemeText = styled.div`
   position: absolute;
   left: 30%;
   bottom: 10%;
-  @media (max-width: 412px) {
+  @media (max-width: 768px) {
     bottom: 25%;
     left: 15%;
   }
