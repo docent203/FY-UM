@@ -27,7 +27,6 @@ const Header = () => {
       setHeaderColor("transparent");
       setIconColor("white");
     }
-
   }, [currentUrl]);
 
   const openMenu = () => {
@@ -35,7 +34,11 @@ const Header = () => {
   };
 
   const HandleLogoClick = () => {
-    navigate("/main");
+    if (!localStorage.getItem("token")) {
+      navigate("/login");
+    } else {
+      navigate("/main");
+    }
   };
 
   return (
