@@ -42,10 +42,10 @@ const DetailPage = () => {
   const changeBookmark = () => {
     setBookmark(!bookmark);
   };
-  console.log(frame);
+
   return (
     <DetailContainer>
-      <BackgroundImg src={longImg} description={description} />
+      <BackgroundImg src={detailImg} description={description} />
       {description === true ? (
         <ContentContainer>
           <Title>The Starry Night</Title>

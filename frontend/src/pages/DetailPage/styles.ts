@@ -26,6 +26,7 @@ export const BackgroundImg = styled.img<BackgroundImgProps>`
   filter: brightness(
     ${(props) => (props.description === true ? "40%" : "100%")}
   );
+  transition: filter 0.5s ease-in-out;
 
   @media (max-width: 768px) {
     margin-top: 25%;
@@ -58,7 +59,6 @@ export const Content = styled.p`
 `;
 
 export const GoBackBtn = styled.div`
-  /* position: absolute; */
   display: flex;
   margin-top: 10%;
 
@@ -68,7 +68,6 @@ export const GoBackBtn = styled.div`
 `;
 export const LeftArrowIcStyle = styled(LeftArrowIc)`
   width: 4vw;
-  /* height: 15px; */
   fill: ${white};
 `;
 
@@ -101,14 +100,18 @@ export const DescriptionP = styled.p`
 
 export const MarkContainer = styled.div`
   position: absolute;
-  bottom: 0.1vh;
+  bottom: 3vh;
   right: 3vw;
+
+  @media (max-width: 768px) {
+    bottom: 0.1vh;
+  }
 `;
 
 export const EmptyFrameIcStyle = styled(EmptyFrame)`
   width: 2vw;
   fill: ${white};
-  margin-right: 2vw;
+  margin-right: 1vw;
 
   @media (max-width: 768px) {
     width: 4vw;
