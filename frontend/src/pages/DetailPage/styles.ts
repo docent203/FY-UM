@@ -11,7 +11,7 @@ interface BackgroundImgProps {
 }
 
 export const DetailContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: relative;
   background-color: ${black};

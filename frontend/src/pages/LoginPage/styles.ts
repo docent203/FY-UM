@@ -4,7 +4,7 @@ import BackgroundImg from "../../assets/images/loginImg1.png";
 import { white } from "../../styles/colors";
 
 export const BackgroundContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   position: relative;
   overflow-y: hidden;
