@@ -1,4 +1,5 @@
 FROM node:18.16.0-alpine as builder
+EXPOSE 3000
 WORKDIR /
 COPY . .
 RUN npm install
