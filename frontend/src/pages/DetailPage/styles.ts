@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { black, white } from "../../styles/colors";
-import { ReactComponent as LeftArrowIc } from "../../assets/icon/leftArrowIc.svg";
 import { ReactComponent as EmptyFrame } from "../../assets/icon/empty_frame.svg";
 import { ReactComponent as EmptyBookmark } from "../../assets/icon/empty_bookmark.svg";
 import { ReactComponent as FullFrame } from "../../assets/icon/full_frame.svg";
 import { ReactComponent as FullBookmark } from "../../assets/icon/full_bookmark.svg";
+import { ReactComponent as Speaker } from "../../assets/icon/speaker.svg";
 
 interface BackgroundImgProps {
   src: string;
@@ -58,23 +58,9 @@ export const Content = styled.p`
   color: ${white};
 `;
 
-export const GoBackBtn = styled.div`
-  display: flex;
-  margin-top: 10%;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-export const LeftArrowIcStyle = styled(LeftArrowIc)`
-  width: 4vw;
+export const SpeakerImg = styled(Speaker)`
+  width: 3vw;
   fill: ${white};
-`;
-
-export const GoBackBtnContent = styled.p`
-  font-size: 1.5vw;
-  color: ${white};
-  padding-bottom: 0.2%;
 `;
 
 export const DescriptionBtn = styled.div`
