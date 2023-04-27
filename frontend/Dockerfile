@@ -6,7 +6,7 @@ RUN npm install
 RUN CI=false npm run build
 #CMD ["npm", "start"]
 
-FROM nginx:stable-alpine
+FROM nginx:stable-alpine as nginx
 RUN rm -rf /etc/nginx/conf.d/default.conf
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 
