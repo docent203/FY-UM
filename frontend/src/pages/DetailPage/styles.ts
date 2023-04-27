@@ -80,31 +80,33 @@ export const GoBackBtnContent = styled.p`
 export const DescriptionBtn = styled.div`
   position: absolute;
   bottom: 1vw;
-  left: 1.5vw;
+  left: 2vw;
 
   &:hover {
     cursor: pointer;
   }
 
   @media (max-width: 768px) {
-    left: 3vw;
+    left: 7vw;
     bottom: 1.5vh;
   }
 `;
 
 export const DescriptionP = styled.p`
   color: ${white};
+  font-family: "SUIT";
   font-size: 1.5vw;
-  font-weight: 700;
+  font-weight: 800;
 `;
 
 export const MarkContainer = styled.div`
   position: absolute;
   bottom: 3vh;
-  right: 3vw;
+  right: 2.6vw;
 
   @media (max-width: 768px) {
     bottom: 0.1vh;
+    right: 5vw;
   }
 `;
 
