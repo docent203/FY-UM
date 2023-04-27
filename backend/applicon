@@ -1,0 +1,37 @@
+server:
+  port: 1234
+  servlet:
+    context-path: /api
+spring:
+  profiles:
+    active: local
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  servlet:
+    multipart:
+      maxFileSize: 40MB
+      maxRequestSize: 100MB
+  datasource:
+    driver-class-name: com.mariadb.cj.jdbc.Driver
+    url: jdbc:mariadb://k8d203.p.ssafy.io:3305/fyum
+    username: root
+    password: P@ssw0rd
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        default_batch_fetch_size: 100
+
+kakao:
+  client_id: 473cb5059426a3323ba76e8920aca594
+#  fe22b0646c0e1e6bbaff9fb1e811d612
+  redirect_uri: http://localhost:3000/oauth
+#  http://localhost:1234/api/members/oauth/login
+jwt:
+  key: picaso
+
+
