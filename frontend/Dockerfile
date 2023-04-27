@@ -3,5 +3,4 @@ EXPOSE 3000
 WORKDIR /frontend/frontend
 COPY . .
 RUN npm install
-RUN npm run build
-
+RUN npm start
