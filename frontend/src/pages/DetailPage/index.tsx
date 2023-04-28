@@ -1,5 +1,7 @@
-import { useState } from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 import {
   DetailContainer,
   BackgroundImg,
@@ -19,6 +21,24 @@ import {
 import detailImg from "../../assets/dummyImg/starrynight.png";
 import longImg from "../../assets/images/main2Img1.png";
 
+interface detailInfo {
+  paintingId: number;
+  titleKr: string;
+  titleOrigin: string;
+  createdAt: string;
+  imgSrc: string;
+  painterId: number;
+  painterKr: string;
+  painterOrigin: string;
+  trendId: number;
+  trend: string;
+  paintingType: string;
+  technique: string;
+  description: string;
+  wishStatus: boolean;
+  exhibitionStatus: boolean;
+}
+
 const DetailPage = () => {
   const navigate = useNavigate();
 
@@ -26,6 +46,25 @@ const DetailPage = () => {
   const [frame, setFrame] = useState(false);
   const [bookmark, setBookmark] = useState(false);
   const [speak, setSpeak] = useState(false);
+
+  // 받아온 데이터 저장
+  const [data, setData] = useState<detailInfo>({
+    paintingId: 0,
+    titleKr: "",
+    titleOrigin: "",
+    createdAt: "",
+    imgSrc: "",
+    painterId: 0,
+    painterKr: "",
+    painterOrigin: "",
+    trendId: 0,
+    trend: "",
+    paintingType: "",
+    technique: "",
+    description: "",
+    wishStatus: false,
+    exhibitionStatus: false,
+  });
 
   const changeState = () => {
     setDescription(!description);
@@ -39,6 +78,16 @@ const DetailPage = () => {
     setBookmark(!bookmark);
   };
 
+  const baseURL = "http://192.168.100.93:1234";
+
+  useEffect(() => {
+    axios
+      .get(baseURL + `/api/paintings/detail/7`)
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(data);
   return (
     <DetailContainer>
       <BackgroundImg src={detailImg} description={description} />
