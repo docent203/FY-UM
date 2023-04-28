@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { black, white } from "../../styles/colors";
 
 export const BackgroundContainer = styled.div`
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   background-color: ${black};
 
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  /* overflow-y: hidden; */
+
+  @media screen and (max-width: 768px) {
+    overflow-y: visible;
+  }
 `;
 
 export const GridItems = styled.div`
@@ -20,7 +23,7 @@ export const TitleContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
+  padding-top: 80px;
 
   color: white;
   font-weight: 700;
@@ -32,4 +35,35 @@ export const Underline = styled.div`
   border: 1.5px solid ${white};
   width: 18vw;
   margin-top: -12px;
+`;
+
+export const CanvasBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+
+  /* @media screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+  } */
+
+  @media screen and (max-width: 1050px) {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+  }
+`;
+
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media screen and (max-width: 768px) {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
 `;
