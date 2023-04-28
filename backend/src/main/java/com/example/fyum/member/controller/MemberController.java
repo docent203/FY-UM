@@ -44,15 +44,6 @@ public class MemberController {
 
         return new ResponseEntity<MemberResponseDto>(memberResponseDto,headers,HttpStatus.valueOf(200));
     }
-    @GetMapping("/oauth/login")// 리다이렉트 받을 api
-    public void getCode(@RequestParam("code") String code){
-        System.out.print(code);
-    }
-
-    @GetMapping("/test")
-    public ResponseEntity<String> getCode(Authentication authentication){
-        return ResponseEntity.ok(authentication.getName()+"hihi");
-    }
 
     @GetMapping("/me")
     public ResponseEntity<Object> getCurrentUser(Authentication authentication) { //(1)

@@ -93,21 +93,5 @@ public class JwtFilter extends OncePerRequestFilter {
             }
             filterChain.doFilter(request, response);
         }
-        // 토큰 꺼내기
-
-
-
-//        try {
-//            Id= JwtUtil.getMemberId(token,key);
-//
-//        } catch (ExpiredJwtException e) {
-//            e.printStackTrace();
-//            request.setAttribute(JwtProperties.HEADER_STRING, "토큰이 만료되었습니다.");
-//        } catch (JWTVerificationException e) {
-//            e.printStackTrace();
-//            request.setAttribute(JwtProperties.HEADER_STRING, "유효하지 않은 토큰입니다.");
-//        }
-
-
     }
 }

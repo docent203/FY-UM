@@ -59,8 +59,7 @@ public class SecurityConfig {
         configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
-        configuration.addAllowedHeader("*");// 추가
-        configuration.addExposedHeader("*");// 추가
+        configuration.addExposedHeader("*");
         configuration.setAllowedHeaders(Arrays.asList(
             "Accept",
             "Accept-Language",

@@ -5,6 +5,8 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.example.fyum.config.JwtProperties;
 import com.example.fyum.config.KakaoProfile;
 import com.example.fyum.config.OauthToken;
+import com.example.fyum.exhibition.entity.Exhibition;
+import com.example.fyum.exhibition.repository.ExhibitionRepository;
 import com.example.fyum.member.entity.Member;
 import com.example.fyum.member.repository.MemberRepository;
 import com.example.fyum.utils.JwtUtil;
@@ -29,6 +31,7 @@ import java.util.Date;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final ExhibitionRepository exhibitionRepository;
 
     @Value("${kakao.client_id}")
     private String client_id;
@@ -117,8 +120,12 @@ public class MemberService {
                     .kakaoId(String.valueOf(profile.getId()))
                     .name(profile.getProperties().getNickname())
                     .build();
-
             memberRepository.save(member);
+
+            Exhibition exhibition = Exhibition.builder()
+                    .member(member)
+                    .build();
+            exhibitionRepository.save(exhibition);
         }
 
         return createToken(member);
