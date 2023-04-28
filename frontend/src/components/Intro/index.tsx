@@ -4,7 +4,7 @@ const Intro = () => {
     <>
       <IntroDiv />
       <TextDiv>
-        <LogoText>FY:UM111</LogoText>
+        <LogoText>FY:UM</LogoText>
         <br></br>
         <IntroText>Online Three-Dimensional Exhibition</IntroText>
       </TextDiv>
