@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
@@ -24,6 +26,12 @@ public class Wishlist {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Painting painting;
+
+    @Builder
+    public Wishlist(Member member , Painting painting) {
+        this.member = member;
+        this.painting = painting;
+    }
 
 
 }

@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WishlistRepository extends JpaRepository<Wishlist, Integer> {
 
+    Wishlist deleteByMember_IdAndPainting_Id(int memberId, int paintingId);
 }
