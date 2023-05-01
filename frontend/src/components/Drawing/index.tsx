@@ -8,11 +8,16 @@ import {
   CanvasContainer,
   CanvasColorsContainer,
   ToolsContainer,
+  InvisibleColorPicker,
   CurrentColor,
   ColorsContainer,
   CanvasColors,
   LineWidthStyle,
   BrushIcStyle,
+  PainterIcStyle,
+  PaletteIcStyle,
+  EraserIcStyle,
+  ResetIcStyle,
 } from "./styles";
 
 interface ImgProps {
@@ -57,25 +62,15 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   }, [ctx, imgFile]);
 
-  // const onMoveDraw = (e: React.MouseEvent<HTMLCanvasElement>) => {
-  //   const mouseX = e.nativeEvent.offsetX;
-  //   const mouseY = e.nativeEvent.offsetY;
-  //   if (!isPainting) {
-  //     ctx?.beginPath();
-  //     ctx?.moveTo(mouseX, mouseY);
-  //   } else {
-  //     ctx?.lineTo(mouseX, mouseY);
-  //     ctx?.stroke();
-  //   }
-  // };
-
   const onMoveDraw = (x: number, y: number) => {
-    if (!isPainting) {
-      ctx?.beginPath();
-      ctx?.moveTo(x, y);
-    } else {
-      ctx?.lineTo(x, y);
-      ctx?.stroke();
+    if (!isFilling) {
+      if (!isPainting) {
+        ctx?.beginPath();
+        ctx?.moveTo(x, y);
+      } else {
+        ctx?.lineTo(x, y);
+        ctx?.stroke();
+      }
     }
   };
 
@@ -182,16 +177,22 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
             </ColorsContainer>
           </CanvasColorsContainer>
           <ToolsContainer>
-            <CurrentColor
+            <CurrentColor color={currentColor} />
+            <InvisibleColorPicker
+              id="color-picker"
               type="color"
               value={currentColor}
               color={currentColor}
               onChange={(e) => onColorChange(e)}
             />
+            <label htmlFor="color-picker">
+              <PaletteIcStyle />
+            </label>
+
             <BrushIcStyle onClick={() => setIsFilling(false)} />
-            <button onClick={() => setIsFilling(true)}>채우기</button>
-            <button onClick={onEraserClick}>지우개</button>
-            <button onClick={onResetClick}>초기화</button>
+            <PainterIcStyle onClick={() => setIsFilling(true)} />
+            <EraserIcStyle onClick={onEraserClick} />
+            <ResetIcStyle onClick={onResetClick} />
             <LineWidthStyle
               type="range"
               min="1"

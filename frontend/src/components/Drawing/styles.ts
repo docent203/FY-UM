@@ -49,7 +49,7 @@ export const Canvas = styled.canvas`
 
   background-color: white;
   z-index: 2;
-  border: 1px solid ${black};
+  border: 2px solid ${black};
   border-radius: 10px;
 
   @media screen and (max-width: 768px) {
@@ -74,19 +74,44 @@ export const CanvasColorsContainer = styled.div`
 export const ToolsContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  gap: 1vw;
+  height: 0px;
+  padding-top: 42px;
+  width: 600px;
 
   @media screen and (max-width: 768px) {
-    margin-top: 10px;
+    padding-top: 40px;
+    justify-content: space-between;
+    width: 400px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 350px;
+    justify-content: center;
   }
 `;
 
-export const CurrentColor = styled.input<{ color: string }>`
-  width: 30px;
-  height: 30px;
+export const CurrentColor = styled.div<{ color: string }>`
+  min-width: 36px;
+  min-height: 36px;
   border-radius: 50%;
   border: 2px solid ${black};
   background-color: ${(props) => props.color};
+  margin-top: 3px;
+
+  @media screen and (max-width: 768px) {
+    min-width: 32px;
+    min-height: 32px;
+  }
+`;
+
+export const InvisibleColorPicker = styled.input`
+  visibility: hidden;
+  width: 0px;
+  height: 0px;
+  margin-left: -10px;
 `;
 
 export const ColorsContainer = styled.div`
@@ -100,7 +125,8 @@ export const ColorsContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     width: 400px;
-    height: 30px;
+    height: 10px;
+    padding-top: 35px;
   }
 
   @media screen and (max-width: 500px) {
@@ -119,11 +145,73 @@ export const CanvasColors = styled.div<{ color: string }>`
 `;
 
 export const BrushIcStyle = styled(BrushIc)`
-  width: 40px;
+  min-width: 40px;
   height: 40px;
   cursor: pointer;
 
   fill: ${grey[700]};
+
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
 `;
 
-export const LineWidthStyle = styled.input``;
+export const PainterIcStyle = styled(PainterIc)`
+  min-width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  fill: ${grey[700]};
+
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+export const PaletteIcStyle = styled(PaletteIc)`
+  min-width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-top: 6px;
+
+  fill: ${grey[700]};
+
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+export const EraserIcStyle = styled(EraserIc)`
+  min-width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  fill: ${grey[700]};
+
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+export const ResetIcStyle = styled(ResetIc)`
+  min-width: 40px;
+  height: 40px;
+  cursor: pointer;
+
+  fill: ${grey[700]};
+
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+  }
+`;
+
+export const LineWidthStyle = styled.input`
+  @media screen and (max-width: 768px) {
+    width: 80px;
+  }
+`;
