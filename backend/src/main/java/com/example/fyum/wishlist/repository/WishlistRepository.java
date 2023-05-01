@@ -13,10 +13,7 @@ import java.util.List;
 
 @Repository
 public interface WishlistRepository extends JpaRepository<Wishlist, Integer> {
-    Wishlist findByMemberAndMasterpiece(Member member, Masterpiece masterpiece);
-    Wishlist findByMasterpiece(Masterpiece masterpiece);
 
-//   List<Wishlist> findByMasterpiece(Painting painting);
 
     List<Wishlist> findByMember(Member member);
     @Transactional

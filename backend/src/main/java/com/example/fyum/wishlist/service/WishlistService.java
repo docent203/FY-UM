@@ -48,15 +48,9 @@ public class WishlistService {
         Optional<Masterpiece> masterpieceOptional = masterpieceRepository.findById(paintingId);
         Masterpiece masterpiece = masterpieceOptional.get();
 
-//        Wishlist wishlist = wishlistRepository.findByMemberAndMasterpiece(member,masterpiece);
-
-//        System.out.println(member.getId()+"--------------------");
-//        System.out.println(masterpiece.getId()+"-------------------");
-//
-//        System.out.println(wishlist);
 
         wishlistRepository.deleteByMemberAndMasterpiece(member,masterpiece);
-//        wishlistRepository.deleteById(wishlist.getId());
+
     }
 
     public List<WishlistResponseDto> getWishList (String kakaoId){
