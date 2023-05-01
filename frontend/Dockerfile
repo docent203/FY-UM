@@ -13,6 +13,6 @@ COPY ./default.conf /etc/nginx/conf.d/default.conf
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /build /usr/share/nginx/html
 
-#RUN apk add --no-cache bash
+RUN apk add --no-cache bash
 
 CMD ["nginx", "-g", "daemon off;"]
