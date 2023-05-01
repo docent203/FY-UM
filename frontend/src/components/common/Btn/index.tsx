@@ -5,7 +5,7 @@ interface BtnProps {
   language: string;
   width?: number | undefined;
   widthM?: number | undefined; // 반응형 넓이
-  // onClick?: (event: React.MouseEvent) => void;
+  onClick?: (event: React.MouseEvent) => void;
 }
 const Btn = ({ type, text, language, width, widthM }: BtnProps) => {
   return (
