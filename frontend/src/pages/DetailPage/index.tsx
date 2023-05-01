@@ -42,10 +42,13 @@ interface detailInfo {
 const DetailPage = () => {
   const navigate = useNavigate();
 
+  // 토큰 불러오기
+  const accessToken = localStorage.getItem("token");
+
   const [description, setDescription] = useState(true);
   const [frame, setFrame] = useState(false);
   const [bookmark, setBookmark] = useState(false);
-  const [speak, setSpeak] = useState(false);
+  // const [speak, setSpeak] = useState(false);
 
   // 받아온 데이터 저장
   const [data, setData] = useState<detailInfo>({
@@ -78,29 +81,30 @@ const DetailPage = () => {
     setBookmark(!bookmark);
   };
 
-  const baseURL = "http://192.168.100.93:1234";
+  const baseURL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     axios
-      .get(baseURL + `/api/paintings/detail/7`)
+      .get(baseURL + `/api/paintings/detail/7`, {
+        headers: {
+          Authorization: accessToken,
+        },
+      })
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
 
+  const imgURL = data.imgSrc;
   console.log(data);
+  console.log(imgURL);
   return (
     <DetailContainer>
-      <BackgroundImg src={detailImg} description={description} />
+      <BackgroundImg src={imgURL} description={description} />
       {description === true ? (
         <ContentContainer>
-          <Title>The Starry Night</Title>
-          <Content>
-            《별이 빛나는 밤》(영어: The Starry Night)은 네덜란드의 화가 빈센트
-            반 고흐의 가장 널리 알려진 작품이자 정신병을 앓고 있을 당시 고흐가
-            그린 그림이다. 1889년 생레미의 정신병원에서 고흐는 정신적 질환으로
-            인한 고통을 떠올려 그림 속의 소용돌이로 묘사했다.
-          </Content>
-          <SpeakerImg />
+          <Title>{data.titleOrigin}</Title>
+          <Content>{data.description}</Content>
+          {/* <SpeakerImg /> */}
         </ContentContainer>
       ) : null}
       <FixedContainer>
