@@ -17,6 +17,8 @@ import Btn from "../../components/common/Btn";
 
 const DrawingPage = () => {
   const [imgFile, setImgFile] = useState<File | undefined>();
+  const [getCanvas, setGetCanvas] = useState<HTMLCanvasElement | null>();
+  console.log("캔버스받음?", getCanvas);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -33,7 +35,7 @@ const DrawingPage = () => {
           <Underline />
         </TitleContainer>
         <CanvasBtnContainer>
-          <DrawingApp imgFile={imgFile} />
+          <DrawingApp imgFile={imgFile} setGetCanvas={setGetCanvas} />
           <BtnContainer>
             <FileBtn htmlFor="file-upload">
               <FileFontStyle>사진 올리기</FileFontStyle>

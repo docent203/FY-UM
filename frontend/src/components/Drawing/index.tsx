@@ -20,11 +20,12 @@ import {
   ResetIcStyle,
 } from "./styles";
 
-interface ImgProps {
+interface CanvasProps {
   imgFile: File | undefined;
+  setGetCanvas:React.Dispatch<React.SetStateAction<HTMLCanvasElement | null | undefined>>
 }
 
-const DrawingApp = ({ imgFile }: ImgProps) => {
+const DrawingApp = ({ imgFile, setGetCanvas }: CanvasProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
   const [isPainting, setIsPainting] = useState(false);
@@ -38,6 +39,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    setGetCanvas(canvas);
     if (canvas) {
       canvas.width = CANVAS_WIDTH;
       canvas.height = CANVAS_HEIGHT;
@@ -62,6 +64,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   }, [ctx, imgFile]);
 
+  // 그림 그리기
   const onMoveDraw = (x: number, y: number) => {
     if (!isFilling) {
       if (!isPainting) {
@@ -74,6 +77,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 모바일 Touch 감지
   const onTouchDraw = (e: React.TouchEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current!.getBoundingClientRect();
     const touchX = e.touches[0].pageX - rect.left;
@@ -81,6 +85,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     onMoveDraw(touchX, touchY);
   };
 
+  // 색상 변경
   const onColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const colorValue = e.target.value;
     if (ctx && colorValue) {
@@ -90,6 +95,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 색상 선택
   const onColorClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.target as HTMLDivElement; // as: 타입 단언 - target이 HTMLDivElement임을 명시적으로 지정
     const colorValue = target.dataset.color;
@@ -100,6 +106,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 지우개
   const onEraserClick = () => {
     if (ctx) {
       setIsFilling(false);
@@ -107,6 +114,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 초기화
   const onResetClick = () => {
     if (ctx) {
       setIsFilling(false);
@@ -115,6 +123,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 색 채우기
   const onCanvasClick = () => {
     if (isFilling && ctx) {
       ctx.fillStyle = currentColor;
@@ -122,6 +131,7 @@ const DrawingApp = ({ imgFile }: ImgProps) => {
     }
   };
 
+  // 선 굵기 변경
   const onLineWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (ctx) {
       const LineWidthValue = Number(e.target.value);
