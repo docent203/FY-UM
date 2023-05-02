@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import {
   BackgroundContainer,
@@ -18,14 +18,31 @@ import Btn from "../../components/common/Btn";
 const DrawingPage = () => {
   const [imgFile, setImgFile] = useState<File | undefined>();
   const [getCanvas, setGetCanvas] = useState<HTMLCanvasElement | null>();
-  console.log("캔버스받음?", getCanvas);
+  const [isDownloadClick, setIsDownloadClick] = useState(false);
 
+  // 이미지 파일 업로드
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const file = e.target.files[0];
       setImgFile(file);
     }
   };
+
+  // 파일 다운로드
+  useEffect(() => {
+    if (getCanvas) {
+      const url = getCanvas.toDataURL();
+      const downloadImg = document.createElement("a");
+
+      if (isDownloadClick) {
+        downloadImg.href = url;
+        downloadImg.download = "myDrawing.png";
+        downloadImg.click();
+      }
+    }
+  }, [getCanvas, isDownloadClick]);
+
+
 
   return (
     <>
@@ -54,6 +71,7 @@ const DrawingPage = () => {
               text="내 기기에 저장"
               language="en"
               widthM={250}
+              onClick={()=>{setIsDownloadClick(true)}}
             />
             <Btn
               type="square"

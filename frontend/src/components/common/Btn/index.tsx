@@ -7,9 +7,9 @@ interface BtnProps {
   widthM?: number | undefined; // 반응형 넓이
   onClick?: (event: React.MouseEvent) => void;
 }
-const Btn = ({ type, text, language, width, widthM }: BtnProps) => {
+const Btn = ({ type, text, language, width, widthM, onClick }: BtnProps) => {
   return (
-    <BtnStyle className={`Btn_${type}`} width={width} widthM={widthM}>
+    <BtnStyle className={`Btn_${type}`} width={width} widthM={widthM} onClick={onClick}>
       <BtnText className={`Btn_${type}`} language={language}>
         {text}
       </BtnText>
