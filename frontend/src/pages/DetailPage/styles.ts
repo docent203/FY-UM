@@ -179,8 +179,7 @@ export const EmptyFrameIcStyle = styled(EmptyFrame)`
 export const FullFrameIcStyle = styled(FullFrame)`
   width: 2vw;
   margin-right: 1vw;
-
-  @media (max-width: 768px) {
+  \ @media (max-width: 768px) {
     width: 4vw;
     margin-right: 2vw;
   }
