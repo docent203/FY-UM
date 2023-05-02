@@ -41,7 +41,7 @@ public class MasterpieceService {
             return null;
         }
         Painter painter = optionalPainter.get();
-        Page<Masterpiece> result = masterpieceRepository.findAllByPainter(painter, pageable);
+        Page<Masterpiece> result = masterpieceRepository.findAllByPainter(pageable, painter);
         return result.map(MasterpieceListDto::new);
     }
 
@@ -70,6 +70,17 @@ public class MasterpieceService {
         }
         Theme theme = themeOptional.get();
         Page<Masterpiece> masterpieces = masterpieceRepository.findAllByTheme(pageable, theme);
+        return masterpieces.map(MasterpieceListDto::new);
+    }
+
+    public Page<MasterpieceListDto> getMasterpiecesByTrend(int trendId, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Optional<Trend> trendOptional = trendRepository.findById(trendId);
+        if (trendOptional.isEmpty()) {
+            return null;
+        }
+        Trend trend = trendOptional.get();
+        Page<Masterpiece> masterpieces = masterpieceRepository.findAllByTrend(pageable, trend);
         return masterpieces.map(MasterpieceListDto::new);
     }
 }
