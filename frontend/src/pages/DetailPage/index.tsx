@@ -1,6 +1,5 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { customAxios } from "../../store/customAxios";
+import { getDetailApi } from "../../store/api";
 import {
   DetailContainer,
   BackgroundImg,
@@ -77,17 +76,12 @@ const DetailPage = () => {
     setBookmark(!bookmark);
   };
 
-  const getDetail = async () => {
-    try {
-      const res = await customAxios.get("paintings/detail/30");
-      setData(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    getDetail();
+    const getDetailData = async () => {
+      const res = await getDetailApi();
+      setData(res.data);
+    };
+    getDetailData();
   }, []);
 
   const imgURL = data.imgSrc;
