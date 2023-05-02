@@ -100,10 +100,12 @@ export const CurrentColor = styled.div<{ color: string }>`
   border: 2px solid ${black};
   background-color: ${(props) => props.color};
   margin-top: 3px;
+  margin-right: -6px;
 
   @media screen and (max-width: 768px) {
     min-width: 32px;
     min-height: 32px;
+    margin-right: 1px;
   }
 `;
 

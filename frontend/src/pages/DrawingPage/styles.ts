@@ -42,12 +42,6 @@ export const CanvasBtnContainer = styled.div`
   justify-content: space-around;
   padding-top: 40px;
 
-  /* @media screen and (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-
-    gap: 40px;
-  } */
 
   @media screen and (max-width: 1050px) {
     flex-direction: column;

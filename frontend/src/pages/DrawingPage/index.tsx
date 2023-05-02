@@ -32,10 +32,11 @@ const DrawingPage = () => {
   useEffect(() => {
     if (getCanvas) {
       const url = getCanvas.toDataURL();
-      const downloadImg = document.createElement("a");
 
       if (isDownloadClick) {
+        const downloadImg = document.createElement("a");
         downloadImg.href = url;
+        console.log(url)
         downloadImg.download = "myDrawing.png";
         downloadImg.click();
       }
