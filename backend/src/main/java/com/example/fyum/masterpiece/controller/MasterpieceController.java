@@ -54,9 +54,12 @@ public class MasterpieceController {
 
     // 테마별 작품 리스트
     @GetMapping("/themes/{themeId}")
-    public ResponseEntity<?> getMasterpiecesByTheme(@PathVariable int themeId,
+    public ResponseEntity<Page<MasterpieceListDto>> getMasterpiecesByTheme(
+        @PathVariable int themeId,
         @RequestParam(required = false, defaultValue = "1") int page) {
-        return null;
+        page--;
+        Page<MasterpieceListDto> result = masterpieceService.getMasterpiecesByTheme(themeId, page);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // 사조 목록

@@ -61,4 +61,15 @@ public class MasterpieceService {
         Optional<Masterpiece> masterpiece = masterpieceRepository.findById(paintingId);
         return masterpiece.map(MasterpieceDto::new).orElse(null);
     }
+
+    public Page<MasterpieceListDto> getMasterpiecesByTheme(int themeId, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Optional<Theme> themeOptional = themeRepository.findById(themeId);
+        if (themeOptional.isEmpty()) {
+            return null;
+        }
+        Theme theme = themeOptional.get();
+        Page<Masterpiece> masterpieces = masterpieceRepository.findAllByTheme(pageable, theme);
+        return masterpieces.map(MasterpieceListDto::new);
+    }
 }
