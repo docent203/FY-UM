@@ -20,7 +20,7 @@ public class ExhibitionController {
     public ResponseEntity<Integer> postExhibitions(@RequestBody ExhibitionRequestDto dto, Authentication authentication){
         return ResponseEntity.ok(exhibitionService.postExhibition(authentication.getName(),dto.getPaintingId()));
     }
-    @PutMapping
+    @PutMapping("")
     public ResponseEntity outExhibitions(@RequestBody ExhibitionRequestDto dto, Authentication authentication){
         exhibitionService.outExhi(dto.getPaintingId(), authentication.getName());
         return new ResponseEntity(HttpStatus.OK);
