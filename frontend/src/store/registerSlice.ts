@@ -29,7 +29,7 @@ const registerSlice = createSlice({
       };
     },
     // 폼 등록 요청
-    formRequestStart(state) {
+    formRequestStart(state, action) {
       state.loading = true;
       state.error = null;
     },

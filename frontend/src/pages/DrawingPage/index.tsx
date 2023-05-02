@@ -36,7 +36,7 @@ const DrawingPage = () => {
       if (isDownloadClick) {
         const downloadImg = document.createElement("a");
         downloadImg.href = url;
-        console.log(url)
+        console.log("이미지url은?", typeof url)
         downloadImg.download = "myDrawing.png";
         downloadImg.click();
       }
