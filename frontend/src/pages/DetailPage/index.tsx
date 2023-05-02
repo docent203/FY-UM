@@ -1,13 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import {
   DetailContainer,
   BackgroundImg,
   ContentContainer,
-  Title,
+  TitleOrigin,
+  TitleKr,
   Content,
+  DetailContent,
+  ContentDiv,
+  DetailDiv,
   SpeakerImg,
   DescriptionBtn,
   DescriptionP,
@@ -18,14 +20,12 @@ import {
   FullBookMarkIcStyle,
   FixedContainer,
 } from "./styles";
-import detailImg from "../../assets/dummyImg/starrynight.png";
-import longImg from "../../assets/images/main2Img1.png";
 
 interface detailInfo {
   paintingId: number;
   titleKr: string;
   titleOrigin: string;
-  createdAt: string;
+  paintedAt: string;
   imgSrc: string;
   painterId: number;
   painterKr: string;
@@ -40,8 +40,6 @@ interface detailInfo {
 }
 
 const DetailPage = () => {
-  const navigate = useNavigate();
-
   // 토큰 불러오기
   const accessToken = localStorage.getItem("token");
 
@@ -55,7 +53,7 @@ const DetailPage = () => {
     paintingId: 0,
     titleKr: "",
     titleOrigin: "",
-    createdAt: "",
+    paintedAt: "",
     imgSrc: "",
     painterId: 0,
     painterKr: "",
@@ -85,7 +83,7 @@ const DetailPage = () => {
 
   useEffect(() => {
     axios
-      .get(baseURL + `/api/paintings/detail/7`, {
+      .get(baseURL + "/api/paintings/detail/21", {
         headers: {
           Authorization: accessToken,
         },
@@ -95,15 +93,32 @@ const DetailPage = () => {
   }, []);
 
   const imgURL = data.imgSrc;
-  console.log(data);
-  console.log(imgURL);
+
+  // console.log(data);
   return (
     <DetailContainer>
-      <BackgroundImg src={imgURL} description={description} />
+      <BackgroundImg
+        src={imgURL}
+        description={description}
+        referrerPolicy="no-referrer"
+      />
       {description === true ? (
         <ContentContainer>
-          <Title>{data.titleOrigin}</Title>
-          <Content>{data.description}</Content>
+          <TitleOrigin len={data.titleOrigin.length}>
+            {data.titleOrigin}
+          </TitleOrigin>
+          <TitleKr>{data.titleKr}</TitleKr>
+          <br />
+          <DetailDiv>
+            <DetailContent>{data.painterOrigin}</DetailContent>
+            <DetailContent>{data.paintedAt}</DetailContent>
+            <DetailContent>
+              {data.paintingType}, {data.technique}
+            </DetailContent>
+          </DetailDiv>
+          <ContentDiv>
+            <Content>{data.description}</Content>
+          </ContentDiv>
           {/* <SpeakerImg /> */}
         </ContentContainer>
       ) : null}
