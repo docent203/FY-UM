@@ -41,9 +41,8 @@ export const ContentContainer = styled.div`
 
   @media (max-width: 768px) {
     margin-top: 15%;
-    width: 80%;
+    width: 85%;
     left: 10%;
-    line-height: 2.5vh;
   }
 `;
 
@@ -57,8 +56,7 @@ export const TitleOrigin = styled.p<{ len: number }>`
   top: 10%;
 
   @media (max-width: 768px) {
-    font-size: 6vw;
-    margin-bottom: 5%;
+    font-size: 4vw;
   }
 `;
 
@@ -70,7 +68,8 @@ export const TitleKr = styled.p`
   margin-top: 0;
 
   @media (max-width: 768px) {
-    font-size: 6vw;
+    font-size: 3vw;
+    margin-top: 0;
     margin-bottom: 5%;
   }
 `;
@@ -88,13 +87,13 @@ export const DetailContent = styled.p`
   margin: 0;
 
   @media (max-width: 768px) {
-    font-size: 6vw;
-    margin-bottom: 5%;
+    font-size: 2vw;
+    margin: 0;
   }
 `;
 
 export const DetailDiv = styled.div`
-  margin-bottom: 3%;
+  margin-bottom: 4%;
 `;
 
 export const ContentDiv = styled.div`
@@ -116,7 +115,9 @@ export const ContentDiv = styled.div`
   }
 
   @media (max-width: 768px) {
-    height: 180%;
+    margin-top: 3vh;
+    width: 100%;
+    height: 300%;
   }
 `;
 
@@ -177,6 +178,7 @@ export const EmptyFrameIcStyle = styled(EmptyFrame)`
   width: 2vw;
   fill: ${white};
   margin-right: 1vw;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 4vw;
@@ -187,7 +189,9 @@ export const EmptyFrameIcStyle = styled(EmptyFrame)`
 export const FullFrameIcStyle = styled(FullFrame)`
   width: 2vw;
   margin-right: 1vw;
-  \ @media (max-width: 768px) {
+  cursor: pointer;
+
+  @media (max-width: 768px) {
     width: 4vw;
     margin-right: 2vw;
   }
@@ -196,6 +200,7 @@ export const FullFrameIcStyle = styled(FullFrame)`
 export const EmptyBookMarkIcStyle = styled(EmptyBookmark)`
   width: 1.5vw;
   fill: ${white};
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 3vw;
@@ -204,6 +209,7 @@ export const EmptyBookMarkIcStyle = styled(EmptyBookmark)`
 
 export const FullBookMarkIcStyle = styled(FullBookmark)`
   width: 1.5vw;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     width: 3vw;
