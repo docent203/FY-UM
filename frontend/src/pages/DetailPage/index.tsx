@@ -86,11 +86,12 @@ const DetailPage = () => {
     setBookmark(!bookmark);
   };
 
-  // 명화 상세 정보 받아오는 api
   useEffect(() => {
+    // 명화 상세 정보 받아오는 api
     const getDetailData = async () => {
       const res = await getDetailApi(paintingId);
       setData(res.data);
+      setBookmark(res.data.wishStatus);
     };
     getDetailData();
   }, []);
