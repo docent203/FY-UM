@@ -22,8 +22,8 @@ const Form = () => {
   );
 
   // 이미지 미리보기
-  const previewImg = new Image();
-  previewImg.src = img;
+  // const previewImg = new Image();
+  // previewImg.src = img;
 
   // 1. input 변경 이벤트 핸들러
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
