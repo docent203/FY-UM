@@ -6,7 +6,8 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authSlice";
 import modalReducer from "./modalSlice";
 import userReducer from "./userSlice";
-import registerReducer from "./registerSlice";
+import listReducer from "./listSlice";
+import registerReducer from "./registerSlice"
 
 // 관리하는 saga
 import { registerSagas } from "./registerSagas";
@@ -16,6 +17,7 @@ const rootReducers = combineReducers({
   auth: authReducer,
   modal: modalReducer,
   user: userReducer,
+  list: listReducer,
   register: registerReducer,
 });
 
