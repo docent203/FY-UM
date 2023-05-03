@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, EventHandler } from "react";
 import { useNavigate } from "react-router-dom";
+import { useHorizontalScroll } from "../utils/useSideScroll";
 
 import {
   ListContainer,
@@ -135,10 +136,11 @@ const List = () => {
     alert("이동하게 하기" + id);
     navigate(`/artlist/${currentUrl[2]}/${id}`);
   };
+  const scrollRef = useHorizontalScroll();
 
   return (
     <ListContainer add={currentUrl[2]}>
-      <ImageContainer>
+      <ImageContainer ref={scrollRef}>
         {listData.map((item: any) => (
           <ImageStyle key={item.id} onClick={() => goArtList(item.id)}>
             {item.imgSrc ? (

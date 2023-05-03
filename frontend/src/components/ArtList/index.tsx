@@ -2,6 +2,7 @@ import { ArtListContainer, ImageContainer, ImageStyle, Temp } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect, useRef, EventHandler } from "react";
+import { useHorizontalScroll } from "../utils/useSideScroll";
 
 const ArtList = () => {
   const navigate = useNavigate();
@@ -46,9 +47,11 @@ const ArtList = () => {
     alert("이동하게 하기" + id);
     navigate(`/detail/${id}`);
   };
+  const scrollRef = useHorizontalScroll();
+
   return (
     <ArtListContainer>
-      <ImageContainer>
+      <ImageContainer ref={scrollRef}>
         {artListData.map((item: any) => (
           <ImageStyle
             key={item.paintingId}

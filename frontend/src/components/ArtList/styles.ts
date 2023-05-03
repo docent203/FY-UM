@@ -7,7 +7,7 @@ export const ArtListContainer = styled.div`
   width: 100vw;
   background-image: url(${BackImg});
 `;
-export const ImageContainer = styled.div`
+export const ImageContainer = styled.div<{ ref: any }>`
   align-items: center;
   display: flex;
   height: 80%;
