@@ -1,4 +1,4 @@
-import { customAxios } from "./customAxios";
+import { customAxios, djangoAxios } from "./customAxios";
 
 interface DrawingQueryTypes {
   title: string;
@@ -19,6 +19,17 @@ export const fullBookmarkApi = async (paintingId: string) => {
 export const emptyBookmarkApi = async (paintingId: string) => {
   await customAxios.delete(`wishlist/${paintingId}`);
 };
+
+// survey 결과 전송
+export const surveySubmitApi = async (choosed: number[]) =>
+  await djangoAxios.post("/recom/", {
+    choosed: choosed,
+  });
+
+// 추천 결과 받아오기
+export const getRecommendApi = async () =>
+  await customAxios.get("recommends/recommends");
+
 // 그림 저장 api
 export const createDrawingApi = async ({
   title,
