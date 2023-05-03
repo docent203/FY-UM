@@ -40,7 +40,7 @@ export const Underline = styled.div`
 export const CanvasBtnContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  padding-top: 40px;
+  padding-top: 60px;
 
 
   @media screen and (max-width: 1050px) {
