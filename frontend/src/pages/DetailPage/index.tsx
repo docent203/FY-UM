@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getDetailApi } from "../../store/api";
+import { useLocation } from "react-router-dom";
 import {
   DetailContainer,
   BackgroundImg,
@@ -41,6 +42,12 @@ interface detailInfo {
 }
 
 const DetailPage = () => {
+  const location = useLocation();
+
+  const paintingId = location.pathname.slice(8);
+
+  console.log(paintingId);
+
   const [description, setDescription] = useState(true);
   const [frame, setFrame] = useState(false);
   const [bookmark, setBookmark] = useState(false);
@@ -79,7 +86,7 @@ const DetailPage = () => {
 
   useEffect(() => {
     const getDetailData = async () => {
-      const res = await getDetailApi();
+      const res = await getDetailApi(paintingId);
       setData(res.data);
     };
     getDetailData();

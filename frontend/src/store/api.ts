@@ -1,4 +1,4 @@
 import { customAxios } from "./customAxios";
 
-export const getDetailApi = async () =>
-  await customAxios.get("paintings/detail/2");
+export const getDetailApi = async (paintingId: string) =>
+  await customAxios.get(`paintings/detail/${paintingId}`);

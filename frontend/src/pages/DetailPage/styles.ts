@@ -48,7 +48,7 @@ export const ContentContainer = styled.div`
 `;
 
 export const TitleOrigin = styled.p<{ len: number }>`
-  font-size: ${(props) => (props.len > 30 ? "2.7vw" : "4vw")};
+  font-size: ${(props) => (props.len > 30 ? "2.6vw" : "4vw")};
   font-family: "Kim jung chul Myungjo";
   font-weight: 700;
   color: ${white};
@@ -78,6 +78,7 @@ export const TitleKr = styled.p`
 export const AbsoluteDiv = styled.div`
   position: absolute;
   top: 100%;
+  width: 97%;
 `;
 
 export const DetailContent = styled.p`
@@ -97,8 +98,9 @@ export const DetailDiv = styled.div`
 `;
 
 export const ContentDiv = styled.div`
+  position: absolute;
   width: 90%;
-  height: 60%;
+  height: 160%;
   overflow-y: auto;
   font-family: "SUIT";
 
