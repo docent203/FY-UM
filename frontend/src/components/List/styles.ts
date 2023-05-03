@@ -48,3 +48,10 @@ export const Card = styled.div`
   margin-right: 10px;
   min-width: 300px;
 `;
+
+export const Temp = styled.div`
+  background-color: pink;
+  color: pink;
+  height: 100%;
+  width: 100%;
+`;
