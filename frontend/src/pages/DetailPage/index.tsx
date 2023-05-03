@@ -102,13 +102,11 @@ const DetailPage = () => {
         await fullBookmarkApi(paintingId);
       };
       fullBookmark();
-      console.log("bookmark : ", bookmark);
     } else {
       const emptyBookmark = async () => {
         await emptyBookmarkApi(paintingId);
       };
       emptyBookmark();
-      console.log("bookmark : ", bookmark);
     }
   }, [bookmark]);
 
