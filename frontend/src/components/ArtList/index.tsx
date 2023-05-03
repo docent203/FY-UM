@@ -44,7 +44,7 @@ const ArtList = () => {
 
   const goDetail = (id: number) => {
     alert("이동하게 하기" + id);
-    navigate(`/detail`);
+    navigate(`/detail/${id}`);
   };
   return (
     <ArtListContainer>
