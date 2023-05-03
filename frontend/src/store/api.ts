@@ -1,6 +1,5 @@
 import { customAxios } from "./customAxios";
 
-<<<<<<< frontend/src/store/api.ts
 interface DrawingQueryTypes {
   title: string;
   contents: string;
@@ -31,4 +30,3 @@ export const createDrawingApi = async ({
     description: contents,
     base64: img,
   });
->>>>>>> frontend/src/store/api.ts
