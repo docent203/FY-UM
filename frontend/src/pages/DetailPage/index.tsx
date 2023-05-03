@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { getDetailApi } from "../../store/api";
+import {
+  getDetailApi,
+  fullBookmarkApi,
+  emptyBookmarkApi,
+} from "../../store/api";
 import { useLocation } from "react-router-dom";
 import {
   DetailContainer,
@@ -46,8 +50,6 @@ const DetailPage = () => {
 
   const paintingId = location.pathname.slice(8);
 
-  console.log(paintingId);
-
   const [description, setDescription] = useState(true);
   const [frame, setFrame] = useState(false);
   const [bookmark, setBookmark] = useState(false);
@@ -84,6 +86,7 @@ const DetailPage = () => {
     setBookmark(!bookmark);
   };
 
+  // 명화 상세 정보 받아오는 api
   useEffect(() => {
     const getDetailData = async () => {
       const res = await getDetailApi(paintingId);
@@ -91,6 +94,23 @@ const DetailPage = () => {
     };
     getDetailData();
   }, []);
+
+  // 찜하기 api
+  useEffect(() => {
+    if (bookmark === true) {
+      const fullBookmark = async () => {
+        await fullBookmarkApi(paintingId);
+      };
+      fullBookmark();
+      console.log("bookmark : ", bookmark);
+    } else {
+      const emptyBookmark = async () => {
+        await emptyBookmarkApi(paintingId);
+      };
+      emptyBookmark();
+      console.log("bookmark : ", bookmark);
+    }
+  }, [bookmark]);
 
   const imgURL = data.imgSrc;
 
