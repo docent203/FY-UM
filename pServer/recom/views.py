@@ -19,10 +19,10 @@ import jwt
 #     tserializer = paintingSerializer(temp_painting)
 #     return Response(tserializer.data, status=status.HTTP_200_OK)
 
-@api_view(['GET'])
+@api_view(['POST'])
 def get_recom_paintings(request):
-    ids = request.GET.get('ids', '')  # ids 매개변수가 없을 경우 기본값은 빈 문자열('')로 설정합니다.
-    id_list = [int(id) for id in ids.split(',') if id]
+    ids = request.data.get('choosed',False)  # ids 매개변수가 없을 경우 기본값은 빈 문자열('')로 설정합니다.
+    id_list = ids
     #p_id 로 그림 추천하기
     #리스트에 담기
     res = []
