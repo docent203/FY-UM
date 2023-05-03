@@ -10,6 +10,7 @@ import {
   DetailContent,
   ContentDiv,
   DetailDiv,
+  AbsoluteDiv,
   SpeakerImg,
   DescriptionBtn,
   DescriptionP,
@@ -99,17 +100,18 @@ const DetailPage = () => {
             {data.titleOrigin}
           </TitleOrigin>
           <TitleKr>{data.titleKr}</TitleKr>
-          <br />
-          <DetailDiv>
-            <DetailContent>{data.painterOrigin}</DetailContent>
-            <DetailContent>{data.paintedAt}</DetailContent>
-            <DetailContent>
-              {data.paintingType}, {data.technique}
-            </DetailContent>
-          </DetailDiv>
-          <ContentDiv>
-            <Content>{data.description}</Content>
-          </ContentDiv>
+          <AbsoluteDiv>
+            <DetailDiv>
+              <DetailContent>{data.painterOrigin}</DetailContent>
+              <DetailContent>{data.paintedAt}</DetailContent>
+              <DetailContent>
+                {data.paintingType}, {data.technique}
+              </DetailContent>
+            </DetailDiv>
+            <ContentDiv>
+              <Content>{data.description}</Content>
+            </ContentDiv>
+          </AbsoluteDiv>
           {/* <SpeakerImg /> */}
         </ContentContainer>
       ) : null}

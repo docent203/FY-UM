@@ -38,7 +38,6 @@ export const ContentContainer = styled.div`
   width: 80%;
   top: 10%;
   left: 14%;
-  height: calc(100vh - 60%);
 
   @media (max-width: 768px) {
     margin-top: 15%;
@@ -49,11 +48,13 @@ export const ContentContainer = styled.div`
 `;
 
 export const TitleOrigin = styled.p<{ len: number }>`
-  font-size: ${(props) => (props.len > 30 ? "2.6vw" : "4vw")};
+  font-size: ${(props) => (props.len > 30 ? "2.7vw" : "4vw")};
   font-family: "Kim jung chul Myungjo";
   font-weight: 700;
   color: ${white};
+  margin-top: 7%;
   margin-bottom: 0;
+  top: 10%;
 
   @media (max-width: 768px) {
     font-size: 6vw;
@@ -67,13 +68,18 @@ export const TitleKr = styled.p`
   font-weight: 500;
   color: ${white};
   margin-top: 0;
-  margin-bottom: 1%;
 
   @media (max-width: 768px) {
     font-size: 6vw;
     margin-bottom: 5%;
   }
 `;
+
+export const AbsoluteDiv = styled.div`
+  position: absolute;
+  top: 100%;
+`;
+
 export const DetailContent = styled.p`
   font-size: 1.1vw;
   font-family: "SUIT";
