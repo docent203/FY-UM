@@ -15,15 +15,21 @@ import { registerActions } from "./registerSlice";
 // api import
 import { createDrawingApi } from "./api";
 
+// type interface
+interface Action {
+  type: string;
+  payload?: any;
+}
+
 // 그림 등록 saga
-function* onCreateDrawingStartAsync({ payload }: any): Generator<any, void, any> {
+function* onCreateDrawingStartAsync({ payload }: Action): Generator<any, void, any> {
   const { formRequestSuccess, formRequestError } = registerActions;
   console.log("사가보내기전 payload", payload);
   try {
     const response = yield call(createDrawingApi, payload)
-    console.log("응답성공!!", response)
     if (response.status === 200) {
         yield put(formRequestSuccess(response.data))
+        console.log("보내졌다!!!")
     }
   } catch (error: any) {
     yield put(formRequestError(error.response.data));

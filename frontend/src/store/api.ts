@@ -6,9 +6,11 @@ interface DrawingQueryTypes {
   img: string;
 }
 
+// 상세정보 api
 export const getDetailApi = async () =>
   await customAxios.get("paintings/detail/30");
 
+// 그림 저장 api
 export const createDrawingApi = async ({
   title,
   contents,
