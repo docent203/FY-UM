@@ -36,6 +36,16 @@ export const surveySubmitApi = async (choosed: number[]) =>
 export const getRecommendApi = async () =>
   await customAxios.get("recommends/recommends");
 
+// 전시회 저장 api
+export const fullFrameApi = async (paintingId: string) => {
+  await customAxios.post("exhibitions", {paintingId});
+};
+
+// 전시회 저장 취소 api
+export const emptyFrameApi = async (paintingId: string) => {
+  await customAxios.put("exhibitions", {paintingId});
+};
+
 // 그림 저장 api
 export const createDrawingApi = async ({
   title,
