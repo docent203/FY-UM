@@ -12,7 +12,7 @@ public class MyDrawingDetailDto {
 
     String discription;
 
-    String ImgSrc;
+    String imgSrc;
 
     Boolean exhibitionStatus;
 }
