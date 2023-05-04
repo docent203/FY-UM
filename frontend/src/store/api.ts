@@ -39,7 +39,7 @@ export const emptyBookmarkApi = async (paintingId: string) => {
 
 // survey 결과 전송
 export const surveySubmitApi = async (choosed: number[]) =>
-  await djangoAxios.post("/recom/", {
+  await djangoAxios.post("/recomm/recom/", {
     choosed: choosed,
   });
 
@@ -49,12 +49,12 @@ export const getRecommendApi = async () =>
 
 // 전시회 저장 api
 export const fullFrameApi = async (paintingId: string) => {
-  await customAxios.post("exhibitions", {paintingId});
+  await customAxios.post("exhibitions", { paintingId });
 };
 
 // 전시회 저장 취소 api
 export const emptyFrameApi = async (paintingId: string) => {
-  await customAxios.put("exhibitions", {paintingId});
+  await customAxios.put("exhibitions", { paintingId });
 };
 
 // 그림 저장 api
@@ -72,7 +72,6 @@ export const createDrawingApi = async ({
   return response;
 };
 
-
 // list 페이지 api
 export const getListApi = async ({ listUrl, page }: ListQueryTypes) =>
   await customAxios.get(`/paintings/${listUrl}/?page=${page + 1}`);
@@ -86,4 +85,3 @@ export const getArtListApi = async ({
   await customAxios.get(
     `/paintings/${artListUrl}/${urlType}/?page=${page + 1}`
   );
-
