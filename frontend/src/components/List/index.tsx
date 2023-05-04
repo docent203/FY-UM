@@ -8,13 +8,14 @@ import {
   Card,
   ImageStyle,
   Temp,
+  ListPageEnd,
 } from "./styles";
 import axios from "axios";
 
 const List = () => {
   const navigate = useNavigate();
   const [listData, setListData] = useState([]); //받아온 데이터 저장
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const pageEnd: any = useRef(); //페이지 끝부분
 
@@ -42,7 +43,8 @@ const List = () => {
       : "themes";
 
     const res: any = await axios.get(
-      `http://k8d203.p.ssafy.io:1234/api/paintings/${listUrl}/?page=1`,
+      process.env.REACT_APP_API_BASE_URL +
+        `/paintings/${listUrl}/?page=${page + 1}`,
       {
         headers: {
           Authorization: accessToken,
@@ -54,7 +56,21 @@ const List = () => {
     // });
 
     const data = await res.data.content;
-    setListData(data);
+    // setListData(data);
+    if (data.length === 0) {
+      if (page === 0) {
+        setListData(data); // 검색결과가 없는 경우
+      }
+    } else {
+      if (page > prevPage) {
+        setListData((prev) => [...prev, ...data] as any);
+        setPrevPage(page);
+      } else {
+        setListData(data);
+      }
+    }
+    setLoading(true);
+
     // if (data.length === 0) {
     //   if (page === 0) {
     //   }
@@ -150,6 +166,7 @@ const List = () => {
             )}
           </ImageStyle>
         ))}
+        <ListPageEnd ref={pageEnd}></ListPageEnd>
       </ImageContainer>
     </ListContainer>
   );
