@@ -30,33 +30,3 @@ export const TitleHr = styled.hr`
   width: 70%;
   margin-top: 0;
 `;
-
-export const SwiperSettings = {
-  spaceBetween: 15,
-  scrollbar: {
-    draggable: true,
-  },
-  // loop: true,
-  slidesPerView: 4,
-};
-
-export const SwiperTitle = styled.p`
-  color: ${white};
-  text-align: center;
-`;
-
-export const SwiperDiv = styled.div`
-  width: 20vw;
-  height: 75vh;
-`;
-
-export const SwiperImgDiv = styled.div`
-  width: 100%;
-`;
-
-export const SwiperImg = styled.img`
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(5px 3px 3px #424242);
-`;

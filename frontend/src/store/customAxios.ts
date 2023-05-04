@@ -24,7 +24,7 @@ customAxios.interceptors.response.use((response) => {
 
 // DJANGO
 export const djangoAxios = axios.create({
-  baseURL: process.env.REACT_APP_API_DJANGO_URL,
+  baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
     Authorization: accessToken,
   },
