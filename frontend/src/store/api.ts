@@ -7,9 +7,17 @@ interface DrawingQueryTypes {
 }
 
 // 상세정보 api
-export const getDetailApi = async (paintingId: string) =>
-  await customAxios.get(`paintings/detail/${paintingId}`);
-
+// export const getDetailApi = async (paintingId: string) =>
+//   await customAxios.get(`paintings/detail/${paintingId}`);
+export const getDetailApi = async (paintingId: string) => {
+  try {
+    const response = await customAxios.get(`paintings/detail/${paintingId}`);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.log("Error occurred while fetching painting detail:", error);
+  }
+};
 // 찜하기 api
 export const fullBookmarkApi = async (paintingId: string) => {
   await customAxios.post(`wishlist/${paintingId}`);

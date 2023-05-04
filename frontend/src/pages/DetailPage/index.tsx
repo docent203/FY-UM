@@ -94,6 +94,7 @@ const DetailPage = () => {
       setBookmark(res.data.wishStatus);
     };
     getDetailData();
+    console.log(1);
   }, []);
 
   // 찜하기 api
