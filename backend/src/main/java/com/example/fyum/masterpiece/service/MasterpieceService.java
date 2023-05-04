@@ -1,5 +1,6 @@
 package com.example.fyum.masterpiece.service;
 
+import com.example.fyum.exhibition.repository.ExhibitionRepository;
 import com.example.fyum.masterpiece.dto.CategoryDto;
 import com.example.fyum.masterpiece.dto.MasterpieceDto;
 import com.example.fyum.masterpiece.dto.MasterpieceListDto;
@@ -11,6 +12,9 @@ import com.example.fyum.masterpiece.repository.MasterpieceRepository;
 import com.example.fyum.masterpiece.repository.PainterRepository;
 import com.example.fyum.masterpiece.repository.ThemeRepository;
 import com.example.fyum.masterpiece.repository.TrendRepository;
+import com.example.fyum.member.entity.Member;
+import com.example.fyum.member.repository.MemberRepository;
+import com.example.fyum.wishlist.repository.WishlistRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,6 +30,9 @@ public class MasterpieceService {
     private final PainterRepository painterRepository;
     private final ThemeRepository themeRepository;
     private final TrendRepository trendRepository;
+    private final MemberRepository memberRepository;
+    private final WishlistRepository wishlistRepository;
+    private final ExhibitionRepository exhibitionRepository;
 
 
     public Page<CategoryDto> getPainters(int page) {
@@ -41,7 +48,7 @@ public class MasterpieceService {
             return null;
         }
         Painter painter = optionalPainter.get();
-        Page<Masterpiece> result = masterpieceRepository.findAllByPainter(painter, pageable);
+        Page<Masterpiece> result = masterpieceRepository.findAllByPainter(pageable, painter);
         return result.map(MasterpieceListDto::new);
     }
 
@@ -57,8 +64,39 @@ public class MasterpieceService {
         return trends.map(CategoryDto::new);
     }
 
-    public MasterpieceDto getDetail(int paintingId) {
-        Optional<Masterpiece> masterpiece = masterpieceRepository.findById(paintingId);
-        return masterpiece.map(MasterpieceDto::new).orElse(null);
+    public MasterpieceDto getDetail(String kakaoId, int paintingId) {
+        Member member = memberRepository.findByKakaoId(kakaoId);
+        Optional<Masterpiece> masterpieceOptional = masterpieceRepository.findById(paintingId);
+        if (masterpieceOptional.isEmpty()) {
+            return null;
+        }
+        Masterpiece masterpiece = masterpieceOptional.get();
+        Boolean wishStatus = wishlistRepository.existsByMemberAndMasterpiece(member, masterpiece);
+        Boolean exhibitStatus = exhibitionRepository.existsByMemberIdAndPaintingIdx(
+            member, masterpiece);
+
+        return new MasterpieceDto(masterpiece, wishStatus, exhibitStatus);
+    }
+
+    public Page<MasterpieceListDto> getMasterpiecesByTheme(int themeId, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Optional<Theme> themeOptional = themeRepository.findById(themeId);
+        if (themeOptional.isEmpty()) {
+            return null;
+        }
+        Theme theme = themeOptional.get();
+        Page<Masterpiece> masterpieces = masterpieceRepository.findAllByTheme(pageable, theme);
+        return masterpieces.map(MasterpieceListDto::new);
+    }
+
+    public Page<MasterpieceListDto> getMasterpiecesByTrend(int trendId, int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        Optional<Trend> trendOptional = trendRepository.findById(trendId);
+        if (trendOptional.isEmpty()) {
+            return null;
+        }
+        Trend trend = trendOptional.get();
+        Page<Masterpiece> masterpieces = masterpieceRepository.findAllByTrend(pageable, trend);
+        return masterpieces.map(MasterpieceListDto::new);
     }
 }

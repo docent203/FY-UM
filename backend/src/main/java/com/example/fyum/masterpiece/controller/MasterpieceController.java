@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,9 +55,12 @@ public class MasterpieceController {
 
     // 테마별 작품 리스트
     @GetMapping("/themes/{themeId}")
-    public ResponseEntity<?> getMasterpiecesByTheme(@PathVariable int themeId,
+    public ResponseEntity<Page<MasterpieceListDto>> getMasterpiecesByTheme(
+        @PathVariable int themeId,
         @RequestParam(required = false, defaultValue = "1") int page) {
-        return null;
+        page--;
+        Page<MasterpieceListDto> result = masterpieceService.getMasterpiecesByTheme(themeId, page);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // 사조 목록
@@ -70,16 +74,21 @@ public class MasterpieceController {
 
     // 사조별 작품 리스트
     @GetMapping("/trends/{trendId}")
-    public ResponseEntity<?> getMasterpiecesByTrend(@PathVariable int trendId,
+    public ResponseEntity<Page<MasterpieceListDto>> getMasterpiecesByTrend(
+        @PathVariable int trendId,
         @RequestParam(required = false, defaultValue = "1") int page) {
-        return null;
+        page--;
+        Page<MasterpieceListDto> result = masterpieceService.getMasterpiecesByTrend(trendId, page);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     // 작품 상세 정보
     @GetMapping("/detail/{paintingId}")
     public ResponseEntity<MasterpieceDto> getMasterpieceDetail(
-        @PathVariable int paintingId) {           // 유저 정보 필요 : 찜, 전시회 상태 반환
-        MasterpieceDto painting = masterpieceService.getDetail(paintingId);
+        @PathVariable int paintingId,
+        Authentication authentication) {
+        MasterpieceDto painting = masterpieceService.getDetail(authentication.getName(),
+            paintingId);
         return new ResponseEntity<>(painting, HttpStatus.OK);
     }
 
