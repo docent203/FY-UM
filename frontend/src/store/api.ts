@@ -40,9 +40,11 @@ export const createDrawingApi = async ({
   title,
   contents,
   img,
-}: DrawingQueryTypes) =>
-  await customAxios.post("mypaintings/save", {
+}: DrawingQueryTypes) => {
+  const response = await customAxios.post("mypaintings/save", {
     title: title,
     description: contents,
-    base64: img,
+    img: img,
   });
+  return response;
+};
