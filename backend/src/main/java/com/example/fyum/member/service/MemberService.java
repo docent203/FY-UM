@@ -134,8 +134,7 @@ public class MemberService {
             Recommend recommend = Recommend.builder()
                     .member(member)
                     .build();
-//            Recommend recommend = new Recommend();
-//            recommend.setMember(member);
+
             recommendRepository.save(recommend);
         }
 
@@ -144,7 +143,7 @@ public class MemberService {
     // 토큰 생성
     public String createToken(Member member) { //(2-1)
 
-        return JwtUtil.creatJwt(member.getKakaoId(),key,60l*60*24*1000);
+        return JwtUtil.creatJwt(member.getKakaoId(),key,10l*1000);
     }
 
     public Member getMember(String id) {
@@ -153,5 +152,19 @@ public class MemberService {
 
         return member;
     }
+
+    public Boolean isSurvey(String kakaoId){
+        Member member=memberRepository.findByKakaoId(kakaoId);
+        Recommend recommend = recommendRepository.findByMember(member);
+
+
+        if(recommend.getPainting1() == null){
+            return false;
+        }
+
+        return true;
+    }
+
+
 
 }
