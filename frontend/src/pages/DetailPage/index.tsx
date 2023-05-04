@@ -81,10 +81,6 @@ const DetailPage = () => {
     setDescription(!description);
   };
 
-  const changeFrame = () => {
-    setFrame(!frame);
-  };
-
   const changeBookmark = () => {
     setBookmark(!bookmark);
   };
@@ -92,10 +88,14 @@ const DetailPage = () => {
   useEffect(() => {
     // 명화 상세 정보 받아오는 api
     const getDetailData = async () => {
-      const res = await getDetailApi(paintingId);
-      setData(res.data);
-      setBookmark(res.data.wishStatus);
-      setFrame(res.data.exhibitionStatus)
+      try {
+        const res = await getDetailApi(paintingId);
+        setData(res.data);
+        setBookmark(res.data.wishStatus);
+        setFrame(res.data.exhibitionStatus);
+      } catch (error) {
+        console.log("데이터 받아오기 실패", error);
+      }
     };
     getDetailData();
   }, []);
@@ -105,7 +105,6 @@ const DetailPage = () => {
     if (bookmark === true) {
       const fullBookmark = async () => {
         try {
-          console.log("찜하기 요청..")
           await fullBookmarkApi(paintingId);
         } catch (error) {
           console.log("찜하기 실패", error);
@@ -115,7 +114,6 @@ const DetailPage = () => {
     } else {
       const emptyBookmark = async () => {
         try {
-          console.log("찜하기 취소 요청..")
           await emptyBookmarkApi(paintingId);
         } catch (error) {
           console.log("찜하기 취소 실패", error);
@@ -126,8 +124,8 @@ const DetailPage = () => {
   }, [bookmark]);
 
   // 전시회 저장 api
-  useEffect(() => {
-    if (frame === true) {
+  const changeFrame = () => {
+    if (frame === false) {
       const fullFrame = async () => {
         try {
           await fullFrameApi(paintingId);
@@ -136,6 +134,7 @@ const DetailPage = () => {
         }
       };
       fullFrame();
+      setFrame(true);
     } else {
       const emptyFrame = async () => {
         try {
@@ -145,8 +144,9 @@ const DetailPage = () => {
         }
       };
       emptyFrame();
+      setFrame(false);
     }
-  }, [frame]);
+  };
 
   const imgURL = data.imgSrc;
 
