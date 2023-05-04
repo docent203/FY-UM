@@ -11,6 +11,7 @@ import {
   ListPageEnd,
 } from "./styles";
 import axios from "axios";
+import { getListApi } from "../../store/api";
 
 const List = () => {
   const navigate = useNavigate();
@@ -42,15 +43,7 @@ const List = () => {
       ? "trends"
       : "themes";
 
-    const res: any = await axios.get(
-      process.env.REACT_APP_API_BASE_URL +
-        `/paintings/${listUrl}/?page=${page + 1}`,
-      {
-        headers: {
-          Authorization: accessToken,
-        },
-      }
-    );
+    const res = await getListApi({ listUrl, page });
     // .then((res) => {
     console.log(res);
     // });
@@ -159,11 +152,7 @@ const List = () => {
       <ImageContainer ref={scrollRef}>
         {listData.map((item: any) => (
           <ImageStyle key={item.id} onClick={() => goArtList(item.id)}>
-            {item.imgSrc ? (
-              <img src={item.imgSrc} referrerPolicy="no-referrer"></img>
-            ) : (
-              <Temp></Temp>
-            )}
+            {<img src={item.imgSrc} referrerPolicy="no-referrer"></img>}
           </ImageStyle>
         ))}
         <ListPageEnd ref={pageEnd}></ListPageEnd>
