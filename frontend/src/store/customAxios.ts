@@ -32,4 +32,3 @@ export const djangoAxios = axios.create({
     Authorization: accessToken,
   },
 });
-);
