@@ -1,9 +1,16 @@
-import { ArtListContainer, ImageContainer, ImageStyle, Temp } from "./styles";
+import {
+  ArtListContainer,
+  ImageContainer,
+  ImageStyle,
+  Temp,
+  ImageTitleStyle,
+} from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect, useRef, EventHandler } from "react";
 import { useHorizontalScroll } from "../utils/useSideScroll";
 import { ListPageEnd } from "../List/styles";
+import { getArtListApi } from "../../store/api";
 
 const ArtList = () => {
   const navigate = useNavigate();
@@ -30,16 +37,9 @@ const ArtList = () => {
       : window.location.pathname.includes("art")
       ? "trends"
       : "themes";
+    const urlType = currentUrl[3];
+    const res = await getArtListApi({ artListUrl, urlType, page });
 
-    const res: any = await axios.get(
-      process.env.REACT_APP_API_BASE_URL +
-        `/paintings/${artListUrl}/${currentUrl[3]}/?page=${page + 1}`,
-      {
-        headers: {
-          Authorization: accessToken,
-        },
-      }
-    );
     console.log(res);
     const data = await res.data.content;
     if (data.length === 0) {
@@ -69,7 +69,7 @@ const ArtList = () => {
           }
         },
         {
-          threshold: 1,
+          threshold: 0.5,
         }
       );
       observer.observe(pageEnd.current);
@@ -89,11 +89,8 @@ const ArtList = () => {
             key={item.paintingId}
             onClick={() => goDetail(item.paintingId)}
           >
-            {item.imgSrc ? (
-              <img src={item.imgSrc} referrerPolicy="no-referrer"></img>
-            ) : (
-              <div></div>
-            )}
+            {<img src={item.imgSrc} referrerPolicy="no-referrer"></img>}
+            <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
           </ImageStyle>
         ))}
         <ListPageEnd ref={pageEnd}></ListPageEnd>
