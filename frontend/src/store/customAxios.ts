@@ -21,7 +21,7 @@ customAxios.interceptors.response.use((response) => {
   }
 
   return response;
-
+}
 );
 
 // DJANGO
