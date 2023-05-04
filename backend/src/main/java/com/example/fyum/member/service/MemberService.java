@@ -143,7 +143,7 @@ public class MemberService {
     // 토큰 생성
     public String createToken(Member member) { //(2-1)
 
-        return JwtUtil.creatJwt(member.getKakaoId(),key,10l*1000);
+        return JwtUtil.creatJwt(member.getKakaoId(),key,60l*60*24*1000);
     }
 
     public Member getMember(String id) {
