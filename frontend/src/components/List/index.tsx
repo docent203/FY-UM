@@ -88,7 +88,11 @@ const List = () => {
         <ListTitleContainer>&nbsp;{title}&nbsp;</ListTitleContainer>
         <ImageContainer ref={scrollRef}>
           {listData.map((item: any) => (
-            <ImageStyle key={item.id} onClick={() => goArtList(item.id)}>
+            <ImageStyle
+              key={item.id}
+              title={"artList"}
+              onClick={() => goArtList(item.id)}
+            >
               {<img src={item.imgSrc} referrerPolicy="no-referrer"></img>}
             </ImageStyle>
           ))}
