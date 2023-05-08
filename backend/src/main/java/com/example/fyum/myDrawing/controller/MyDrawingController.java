@@ -47,7 +47,7 @@ public class MyDrawingController {
         return ResponseEntity.ok(myDrawingService.getDetail(paintingId,authentication.getName()));
     }
 
-    @GetMapping("picture/detail/{paintingId}")
+    @GetMapping("/picture/detail/{paintingId}")
     public ResponseEntity<MyDrawingDetailDto> getDetailMyPicture(@PathVariable int paintingId, Authentication authentication){
         return ResponseEntity.ok(myPictureService.getDetail(paintingId,authentication.getName()));
     }
