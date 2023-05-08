@@ -64,7 +64,7 @@ public class MasterpieceService {
 
     public Page<CategoryDto> getTrends(int page) {
         Pageable pageable = PageRequest.of(page, 10);
-        Page<Trend> trends = trendRepository.findAll(pageable);
+        Page<Trend> trends = trendRepository.findAllByOrderByMasterpieceDesc(pageable);
         return trends.map(CategoryDto::new);
     }
 
