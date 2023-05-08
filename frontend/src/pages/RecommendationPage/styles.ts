@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { black, white } from "../../styles/colors";
-import { SwiperSlide } from "swiper/react";
+import recommendImg from "../../assets/images/recommendPageImg.png";
 
 export const RecommendContainer = styled.div`
   width: 100vw;
   height: 100%;
   position: relative;
-  background-color: ${black};
+  background-image: url(${recommendImg});
   overflow-x: hidden;
 `;
 
@@ -30,36 +30,4 @@ export const TitleP = styled.p`
 export const TitleHr = styled.hr`
   width: 70%;
   margin-top: 0;
-`;
-
-export const SwiperSettings = {
-  spaceBetween: 15,
-  scrollbar: {
-    draggable: true,
-  },
-  slidesPerView: 4,
-};
-
-export const SwiperTitle = styled.p`
-  color: ${white};
-  text-align: center;
-`;
-
-export const SwiperSlideContainer = styled(SwiperSlide)`
-  flex: 0 0 auto;
-`;
-export const SwiperDiv = styled.div`
-  width: 30vw;
-  height: 70vh;
-`;
-
-export const SwiperImgDiv = styled.div`
-  width: 100%;
-`;
-
-export const SwiperImg = styled.img`
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(5px 3px 3px #424242);
 `;
