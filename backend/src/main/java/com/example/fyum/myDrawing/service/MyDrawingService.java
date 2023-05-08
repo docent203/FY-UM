@@ -118,43 +118,4 @@ public class MyDrawingService {
 
     }
 
-
-    public MyDrawingResponseDto saveMyPicture(MyDrawingRequestDto dto, String kakaoId){
-
-        Member member = memberRepository.findByKakaoId(kakaoId);
-
-
-        MyPicture myPicture = MyPicture.builder()
-                .title(dto.getTitle())
-                .description(dto.getDescription())
-                .member(member)
-                .build();
-
-
-        // base64 문자열로부터 이미지 데이터 디코딩
-        byte[] imageBytes = Base64.getDecoder().decode(dto.getImg());
-
-        // S3 객체 메타 데이터 설정
-        ObjectMetadata metadata = new ObjectMetadata();
-        metadata.setContentType("image/png"); // 이미지 타입 설정
-
-
-        String filename = UUID.randomUUID().toString()+".png";
-        // S3 객체 업로드 요청 생성
-        PutObjectRequest request = new PutObjectRequest(bucket, filename, new ByteArrayInputStream(imageBytes), metadata);
-
-        // S3 객체 업로드 요청 전송
-        amazonS3.putObject(request.withCannedAcl(CannedAccessControlList.PublicRead));
-
-        myPicture.setImgSrc(perfix+filename);
-        int pId = myPictureRepository.save(myPicture).getId();
-
-        MyDrawingResponseDto resdto = new MyDrawingResponseDto();
-        resdto.setPaintingId(pId);
-        resdto.setImgSrc(perfix+filename);
-
-        return resdto;
-
-    }
-
 }
