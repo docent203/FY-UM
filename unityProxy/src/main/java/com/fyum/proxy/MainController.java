@@ -123,7 +123,10 @@ public class MainController {
         Translation translation = translate.translate(text, Translate.TranslateOption.sourceLanguage(sourceLanguage),
                 Translate.TranslateOption.targetLanguage(targetLanguage));
 
+        String resultText = translation.getTranslatedText();
+        resultText = resultText.replace("&quot;", "");
+        resultText = resultText.replace("&#39;", "");
         // 번역된 결과를 출력합니다.
-        return translation.getTranslatedText();
+        return resultText;
     }
 }
