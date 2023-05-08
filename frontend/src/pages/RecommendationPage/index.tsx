@@ -1,6 +1,6 @@
 import { getRecommendApi } from "../../store/api";
 import { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import {
   RecommendContainer,
   TitleContainer,
@@ -8,6 +8,8 @@ import {
   TitleHr,
   SwiperSettings,
   SwiperSlideContainer,
+  SwiperTitle,
+  SwiperImgDiv,
   SwiperDiv,
   SwiperImg,
 } from "./styles";
@@ -15,6 +17,7 @@ import {
 interface itemInfo {
   paintingId: number;
   imgSrc: string;
+  titleOrigin: string;
 }
 const RecommendationPage = () => {
   const [data, setData] = useState([]);
@@ -42,25 +45,16 @@ const RecommendationPage = () => {
       </TitleContainer>
       <Swiper {...SwiperSettings}>
         {data.map((item: itemInfo) => (
-          <SwiperSlide key={item.paintingId}>
-            <SwiperDiv>
-              <SwiperImg src={item.imgSrc} referrerPolicy="no-referrer" />
-            </SwiperDiv>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* <Swiper {...SwiperSettings}>
-        {data.map((item: itemInfo) => (
-          <SwiperSlide key={item.paintingId}>
+          <SwiperSlideContainer key={item.paintingId}>
             <SwiperDiv>
               <SwiperImgDiv>
                 <SwiperImg src={item.imgSrc} referrerPolicy="no-referrer" />
               </SwiperImgDiv>
+              <SwiperTitle>{item.titleOrigin}</SwiperTitle>
             </SwiperDiv>
-          </SwiperSlide>
+          </SwiperSlideContainer>
         ))}
-      </Swiper> */}
+      </Swiper>
     </RecommendContainer>
   );
 };

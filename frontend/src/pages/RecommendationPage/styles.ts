@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { black, white } from "../../styles/colors";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 
 export const RecommendContainer = styled.div`
   width: 100vw;
@@ -37,17 +37,24 @@ export const SwiperSettings = {
   scrollbar: {
     draggable: true,
   },
-  // loop: true,
   slidesPerView: 4,
 };
+
+export const SwiperTitle = styled.p`
+  color: ${white};
+  text-align: center;
+`;
 
 export const SwiperSlideContainer = styled(SwiperSlide)`
   flex: 0 0 auto;
 `;
-
 export const SwiperDiv = styled.div`
-  width: 20vw;
-  height: 75vh;
+  width: 30vw;
+  height: 70vh;
+`;
+
+export const SwiperImgDiv = styled.div`
+  width: 100%;
 `;
 
 export const SwiperImg = styled.img`
