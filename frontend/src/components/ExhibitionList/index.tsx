@@ -45,7 +45,10 @@ const ExhibitionList = () => {
 
   // 사진 업로드 모달 열기
   const openUpload = () => {
-    console.log("모달 열렸냐구");
+    if (data.length === 10) {
+      alert("전시회 목록은 최대 10개까지 가능합니다.");
+      return;
+    }
     openModal({
       type: "upload",
       title: "작품 업로드하기",
@@ -73,7 +76,7 @@ const ExhibitionList = () => {
           ))}
       </ImageContainer>
       <FixedContainer>
-        <UploadBtn onClick={(openUpload)}>
+        <UploadBtn onClick={openUpload}>
           <Btn type="transparent" text="Upload" language="en" />
         </UploadBtn>
         <GoExhibitionBtn onClick={goExhibition}>
