@@ -14,6 +14,8 @@ import WishListPage from "./WishListPage";
 import IntroPage from "./IntroPage";
 import KakaoHandle from "../components/auth/KakaoHandle";
 import MyDrawingsPage from "./MyDrawingsPage";
+import DetailEtcPage from "./DetailEtcPage";
+
 import TestPage from "./TestPage";
 import Unity from "./TestPage/UnityPage";
 
@@ -34,6 +36,7 @@ export {
   IntroPage,
   KakaoHandle,
   MyDrawingsPage,
+  DetailEtcPage,
   TestPage,
   Unity,
 };
