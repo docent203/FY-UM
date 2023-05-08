@@ -11,7 +11,10 @@ import com.example.fyum.masterpiece.repository.PaintingRepository;
 import com.example.fyum.member.entity.Member;
 import com.example.fyum.member.repository.MemberRepository;
 import com.example.fyum.myDrawing.entity.MyDrawing;
+import com.example.fyum.myDrawing.entity.MyPicture;
 import com.example.fyum.myDrawing.repository.MyDrawingRepository;
+import com.example.fyum.myDrawing.repository.MyPictureRepository;
+import com.example.fyum.myDrawing.service.MyPictureService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +37,8 @@ public class ExhibitionService {
 
     private final MyDrawingRepository myDrawingRepository;
 
+    private final MyPictureRepository myPictureRepository;
+
     public Painting getEx(int paintingId){
 
         String temp = paintingRepository.selectSQLById(paintingId);
@@ -41,8 +46,11 @@ public class ExhibitionService {
         if(temp.equals("MP")){
             Optional<Masterpiece> ex = masterpieceRepository.findById(paintingId);
             return ex.get();
-        }else{
+        }else if(temp.equals("MD")){
             Optional<MyDrawing> ex =  myDrawingRepository.findById(paintingId);
+            return ex.get();
+        }else {
+            Optional<MyPicture> ex = myPictureRepository.findById(paintingId);
             return ex.get();
         }
 
@@ -100,8 +108,10 @@ public class ExhibitionService {
             dto.setPaintingId(painting.getId());
             if(Dtype.equals("MP")){
                 dto.setTitle(masterpieceRepository.findById(painting.getId()).get().getTitleOrigin());
-            }else{
+            }else if(Dtype.equals("MD")){
                 dto.setTitle(myDrawingRepository.findById(painting.getId()).get().getTitle());
+            }else{
+                dto.setTitle(myPictureRepository.findById(painting.getId()).get().getTitle());
             }
             return dto;
         }
