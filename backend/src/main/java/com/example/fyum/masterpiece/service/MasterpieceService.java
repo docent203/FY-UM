@@ -4,6 +4,7 @@ import com.example.fyum.exhibition.repository.ExhibitionRepository;
 import com.example.fyum.masterpiece.dto.CategoryDto;
 import com.example.fyum.masterpiece.dto.MasterpieceDto;
 import com.example.fyum.masterpiece.dto.MasterpieceListDto;
+import com.example.fyum.masterpiece.dto.PainterListDto;
 import com.example.fyum.masterpiece.entity.Masterpiece;
 import com.example.fyum.masterpiece.entity.Painter;
 import com.example.fyum.masterpiece.entity.Theme;
@@ -41,15 +42,17 @@ public class MasterpieceService {
         return painters.map(CategoryDto::new);
     }
 
-    public Page<MasterpieceListDto> getMasterpiecesByPainter(int painterId, int page) {
+    public PainterListDto getMasterpiecesByPainter(int painterId, int page) {
         Pageable pageable = PageRequest.of(page, 10);
         Optional<Painter> optionalPainter = painterRepository.findById(painterId);
         if (optionalPainter.isEmpty()) {
             return null;
         }
         Painter painter = optionalPainter.get();
-        Page<Masterpiece> result = masterpieceRepository.findAllByPainter(pageable, painter);
-        return result.map(MasterpieceListDto::new);
+        Page<MasterpieceListDto> masterpieceLists = masterpieceRepository.findAllByPainter(pageable,
+            painter).map(MasterpieceListDto::new);
+
+        return new PainterListDto(masterpieceLists, painter);
     }
 
     public Page<CategoryDto> getThemes(int page) {
