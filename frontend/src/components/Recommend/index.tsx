@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRecommendApi } from "../../store/api";
 import { useHorizontalScroll } from "../utils/useSideScroll";
-import { ImageContainer, ImageStyle } from "../../styles/listStyles";
-import { ImageTitleStyle } from "./styles";
+import { ImageContainer } from "../../styles/listStyles";
+import { ImageTitleStyle, ImageStyle } from "./styles";
 
 const RecommendList = () => {
   const scrollRef = useHorizontalScroll(window.innerWidth > 768);
