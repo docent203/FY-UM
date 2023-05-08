@@ -1,7 +1,16 @@
 import { getRecommendApi } from "../../store/api";
 import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { RecommendContainer, TitleContainer, TitleP, TitleHr } from "./styles";
+import {
+  RecommendContainer,
+  TitleContainer,
+  TitleP,
+  TitleHr,
+  SwiperSettings,
+  SwiperSlideContainer,
+  SwiperDiv,
+  SwiperImg,
+} from "./styles";
 
 interface itemInfo {
   paintingId: number;
@@ -31,15 +40,27 @@ const RecommendationPage = () => {
         <TitleP>Recommend List</TitleP>
         <TitleHr />
       </TitleContainer>
-      <Swiper>
+      <Swiper {...SwiperSettings}>
         {data.map((item: itemInfo) => (
           <SwiperSlide key={item.paintingId}>
-            <div>
-              <img src={item.imgSrc} referrerPolicy="no-referrer" />
-            </div>
+            <SwiperDiv>
+              <SwiperImg src={item.imgSrc} referrerPolicy="no-referrer" />
+            </SwiperDiv>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* <Swiper {...SwiperSettings}>
+        {data.map((item: itemInfo) => (
+          <SwiperSlide key={item.paintingId}>
+            <SwiperDiv>
+              <SwiperImgDiv>
+                <SwiperImg src={item.imgSrc} referrerPolicy="no-referrer" />
+              </SwiperImgDiv>
+            </SwiperDiv>
+          </SwiperSlide>
+        ))}
+      </Swiper> */}
     </RecommendContainer>
   );
 };

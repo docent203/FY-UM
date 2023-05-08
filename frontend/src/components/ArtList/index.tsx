@@ -1,23 +1,22 @@
-import {
-  ArtListContainer,
-  ImageContainer,
-  ImageStyle,
-  Temp,
-  ImageTitleStyle,
-} from "./styles";
+import { ArtListContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect, useRef, EventHandler } from "react";
 import { useHorizontalScroll } from "../utils/useSideScroll";
 import { ListPageEnd } from "../List/styles";
 import { getArtListApi } from "../../store/api";
-
+import {
+  ImageStyle,
+  ImageContainer,
+  ImageTitleStyle,
+} from "../../styles/listStyles";
 const ArtList = () => {
   const navigate = useNavigate();
   const [artListData, setArtListData] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const pageEnd: any = useRef();
+  const [scrollFunctionRef, setScrollFunctionRef] = useState(null);
 
   let currentUrl = window.location.pathname.split("/");
   const [prevPage, setPrevPage] = useState(0); //1로 하는게 맞는가?0으로 하는게 맞는가?
@@ -79,7 +78,7 @@ const ArtList = () => {
     alert("이동하게 하기" + id);
     navigate(`/detail/${id}`);
   };
-  const scrollRef = useHorizontalScroll();
+  const scrollRef = useHorizontalScroll(window.innerWidth > 768);
 
   return (
     <ArtListContainer>
