@@ -72,6 +72,13 @@ export const getMyDrawingsDetailApi = async (myPaintingId: string) =>
 export const getMyPicturesDetailApi = async (myPaintingId: string) =>
   await customAxios.get(`mypaintings/picture/detail/${myPaintingId}`);
 
+// 내 그림 삭제
+export const deleteMyDrawingApi = async (myPaintingId: string) =>
+  await customAxios.delete(`mypaintings/${myPaintingId}`);
+
+// 내 사진 삭제
+export const deleteMyPictureApi = async (myPaintingId: string) =>
+  await customAxios.delete(`mypaintings/picture/${myPaintingId}`);
 
 // 그림 저장 api
 export const createDrawingApi = async ({
