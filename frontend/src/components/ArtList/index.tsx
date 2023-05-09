@@ -90,11 +90,11 @@ const ArtList = () => {
   const changeState = () => {
     setInfo(!info);
   };
-
+  useEffect(() => {}, [info]);
   return (
     <ArtListContainer>
       <ImageContainer ref={scrollRef}>
-        {/* <SideBar info={info} setInfo={setInfo}></SideBar> */}
+        <SideBar info={info} setInfo={setInfo}></SideBar>
         {artListData.map((item: any) => (
           <ImageStyle
             key={item.paintingId}
