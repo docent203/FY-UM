@@ -7,7 +7,6 @@ import { ImageStyle, ImageTitleStyle } from "../../styles/listStyles";
 
 import { getListApi } from "../../store/api";
 import { ListTitleContainer, ImageContainer } from "../../styles/listStyles";
-import { $CombinedState } from "@reduxjs/toolkit";
 
 const List = () => {
   const navigate = useNavigate();
