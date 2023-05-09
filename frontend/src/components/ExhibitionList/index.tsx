@@ -43,7 +43,7 @@ const ExhibitionList = () => {
     if (type === "MP") {
       navigate(`/detail/${id}`);
     } else {
-      navigate(`/detail/paintings/${id}`)
+      navigate(`/detail/painting/${id}`)
     }
    
   };

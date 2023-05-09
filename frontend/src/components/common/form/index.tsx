@@ -115,35 +115,37 @@ const Form = ({ type }: FormProps) => {
   return (
     <FormContainer>
       <form>
-        <InputDiv>
-          <p>Attachment</p>
-          <BrowseFileContainer>
-            <InputStyle
-              className="exhibitionList"
-              placeholder="작품을 업로드하세요."
-              value={fileName}
-            />
-            <label htmlFor="file-upload">
-              <Btn
-                type="attachment"
-                text="Browse files"
-                language="en"
-                width={110}
-                height={31}
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("file-upload")?.click();
-                }}
+        {type === "exhibitionList" && (
+          <InputDiv>
+            <p>Attachment</p>
+            <BrowseFileContainer>
+              <InputStyle
+                className="exhibitionList"
+                placeholder="작품을 업로드하세요."
+                value={fileName}
               />
-            </label>
-            <RealFileBtn
-              id="file-upload"
-              type="file"
-              accept="image/*"
-              onChange={(e) => onUpload(e)}
-            />
-          </BrowseFileContainer>
-        </InputDiv>
+              <label htmlFor="file-upload">
+                <Btn
+                  type="attachment"
+                  text="Browse files"
+                  language="en"
+                  width={110}
+                  height={31}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("file-upload")?.click();
+                  }}
+                />
+              </label>
+              <RealFileBtn
+                id="file-upload"
+                type="file"
+                accept="image/*"
+                onChange={(e) => onUpload(e)}
+              />
+            </BrowseFileContainer>
+          </InputDiv>
+        )}
 
         <InputContainer>
           <InputDiv>
@@ -175,7 +177,7 @@ const Form = ({ type }: FormProps) => {
           {uploadImg && type === "exhibitionList" && (
             <PreviewImgStyle
               className="exhibitionList"
-              src={`${uploadImg}`}
+              src={`data:image/jpeg;base64,${uploadImg}`}
               alt="이미지 미리보기"
             />
           )}
