@@ -15,6 +15,7 @@ const RecommendList = () => {
       try {
         const res = await getRecommendApi();
         setData(res.data);
+        console.log("성공했나?");
       } catch (err) {
         console.log(err);
       }
