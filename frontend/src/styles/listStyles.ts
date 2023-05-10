@@ -182,3 +182,9 @@ export const ListPageEnd = styled.div`
     margin-bottom: 20px;
   }
 `;
+
+export const InvisibleBox = styled.div`
+  width: 800%;
+  height: 800%;
+  visibility: hidden;
+`;

@@ -15,6 +15,7 @@ import {
   ImageStyle,
   ImgSrcStyle,
   ImageTitleStyle,
+  InvisibleBox,
 } from "../../styles/listStyles";
 
 import {
@@ -96,6 +97,7 @@ const ExhibitionList = () => {
               <ImageTitleStyle>{item.title}</ImageTitleStyle>
             </ImgtitleContainer>
           ))}
+        {data.length < 4 && <InvisibleBox />}
       </ImageContainer>
       <FixedContainer>
         <UploadBtn onClick={openUpload}>

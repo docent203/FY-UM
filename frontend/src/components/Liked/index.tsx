@@ -9,9 +9,8 @@ import {
   ImageStyle,
   ImgSrcStyle,
   ImageTitleStyle,
+  InvisibleBox,
 } from "../../styles/listStyles";
-
-import { InvisibleBox } from "./styles";
 
 const LikedList = () => {
   const scrollRef = useHorizontalScroll(window.innerWidth > 768);
