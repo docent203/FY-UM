@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { white } from "./colors";
+import { white, black } from "./colors";
 
 export const ListBackgroundContainer = styled.div<{ backgroundimg: string }>`
   height: 100vh;
@@ -163,7 +163,7 @@ export const ImageTitleStyle = styled.div<{ title?: string }>`
   width: 100%;
   text-align: center;
 
-  color: ${(props) => (props.title === "artList" ? `${white}` : "")};
+  color: ${(props) => (props.title === "artList" ? `${black}` : `${white}`)};
 
   @media (max-width: 768px) {
   }

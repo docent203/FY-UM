@@ -114,11 +114,7 @@ const List = () => {
                   <Frame />
                 </FrameContainer>
               </ImageStyle>
-              <ImageTitleStyle title={"artList"}>
-                {/* {item.nameOrigin}
-                <br></br> */}
-                {item.nameKr}
-              </ImageTitleStyle>
+              <ImageTitleStyle>{item.nameKr}</ImageTitleStyle>
             </ImgtitleContainer>
           ))}
           <ListPageEnd ref={pageEnd}></ListPageEnd>

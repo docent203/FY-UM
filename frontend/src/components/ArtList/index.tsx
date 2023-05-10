@@ -118,11 +118,10 @@ const ArtList = () => {
             </ImageStyle>
 
             {item.titleOrigin === null ? (
-              <ImageTitleStyle>{item.titleKr}</ImageTitleStyle>
+              <ImageTitleStyle title={"artList"}>{item.titleKr}</ImageTitleStyle>
             ) : (
-              <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
+              <ImageTitleStyle title={"artList"}> {item.titleOrigin}</ImageTitleStyle>
             )}
-            {/* <ImageTitleStyle> {item.titleKr}</ImageTitleStyle> */}
           </ImgtitleContainer>
         ))}
         <ListPageEnd ref={pageEnd}></ListPageEnd>
