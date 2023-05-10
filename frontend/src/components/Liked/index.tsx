@@ -31,7 +31,7 @@ const LikedList = () => {
     getLikedData();
   }, []);
 
-  console.log("데이터?", data)
+  console.log("데이터?", data);
   console.log("데이터 길이는?", data.length);
 
   const goDetail = (id: number) => {
@@ -61,6 +61,7 @@ const LikedList = () => {
               <ImageTitleStyle>{item.title}</ImageTitleStyle>
             </ImgtitleContainer>
           ))}
+        {data.length < 4 && <InvisibleBox />}
       </ImageContainer>
     </>
   );
