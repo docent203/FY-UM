@@ -4,6 +4,9 @@ import ArtTrendBackImg from "../../assets/images/listArtTrendBackground.png";
 import ThemeBackImg from "../../assets/images/listThemeBackground.png";
 import ExListBackImg from "../../assets/images/exListBackgroundImg.png";
 import MyDrawingBackImg from "../../assets/images/myDrawingsBackgroundImg.png";
+import RecommendationBackImg from "../../assets/images/recommendPageImg.png";
+import LikedBackImg from "../../assets/images/likedPageImg.png";
+
 
 import FrameImg from "../../assets/images/frameImg.png";
 
@@ -21,7 +24,9 @@ export const ListContainer = styled.div<{ add: string }>`
       ? `url(${ExListBackImg})`
       : props.add === "mydrawing"
       ? `url(${MyDrawingBackImg})`
-      : ""};
+      : props.add === "rec"
+      ?  `url(${RecommendationBackImg})`
+      :  `url(${LikedBackImg})`};
 
   // 수정
   overflow-x: hidden;
