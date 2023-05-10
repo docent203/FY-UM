@@ -3,6 +3,7 @@ import {
   changeUserNickNm,
   changeAccessToken,
   changeSurvey,
+  changeId,
 } from "../../store/userSlice";
 import { useDispatch } from "react-redux";
 
@@ -17,11 +18,13 @@ const KakaoHandle = () => {
     .get(baseURL + `/api/members/oauth/token?code=${code}`)
     .then((res) => {
       if (res.status === 200) {
+        console.log(res);
         // 로컬스토리지에 토큰 저장
         localStorage.setItem("token", res.headers.authorization);
         dispatch(changeUserNickNm(res.data.nickname));
         dispatch(changeAccessToken(res.headers.authorization));
         dispatch(changeSurvey(res.data.survey));
+        dispatch(changeId(res.data.id));
         {
           res.data.survey === true
             ? (window.location.href = "/main")
