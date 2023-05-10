@@ -51,9 +51,7 @@ const SurveyPage = () => {
   const sendSurveyData = async () => {
     try {
       await surveySubmitApi(choosed);
-      console.log("성공!");
       dispatch(changeSurvey(true));
-      console.log("설문 성공!");
     } catch (err) {
       console.log(err);
     }
