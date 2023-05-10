@@ -1,16 +1,21 @@
 import { ArtListContainer } from "./styles";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect, useRef, EventHandler } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHorizontalScroll } from "../utils/useSideScroll";
-import { ImageSrcStyle, ListPageEnd } from "../List/styles";
 import { getArtListApi } from "../../store/api";
+
 import {
-  ImageStyle,
+  ImgtitleContainer,
   ImageContainer,
+  ImageStyle,
+  ImgSrcStyle,
   ImageTitleStyle,
+  ListPageEnd,
 } from "../../styles/listStyles";
+
 import { DescriptionBtn, DescriptionP } from "../../pages/DetailPage/styles";
+
 import SideBar from "./SideBar";
 
 const ArtList = () => {
@@ -78,14 +83,17 @@ const ArtList = () => {
       observer.observe(pageEnd.current);
     }
   }, [loading]);
+
   const goDetail = (id: number) => {
     alert("이동하게 하기" + id);
     navigate(`/detail/${id}`);
   };
+
   const scrollRef = useHorizontalScroll(window.innerWidth > 768);
-  window.onresize = () => {
-    window.location.reload();
-  };
+
+  // window.onresize = () => {
+  //   window.location.reload();
+  // };
 
   const changeState = () => {
     setInfo(!info);
@@ -93,28 +101,29 @@ const ArtList = () => {
   useEffect(() => {}, [info]);
   return (
     <ArtListContainer>
-      <ImageContainer ref={scrollRef}>
-        <SideBar info={info} setInfo={setInfo}></SideBar>
+      <ImageContainer className="artlist" ref={scrollRef}>
+        {/* <SideBar info={info} setInfo={setInfo}></SideBar> */}
         {artListData.map((item: any) => (
-          <ImageStyle
-            key={item.paintingId}
-            onClick={() => goDetail(item.paintingId)}
-          >
-            {/* {window.innerWidth > 768 ? (
-              <img src={item.imgSrc} referrerPolicy="no-referrer"></img>
-            ) : (
-              <img
+          <ImgtitleContainer className="artlist">
+            <ImageStyle
+              className="artlist"
+              key={item.paintingId}
+              onClick={() => goDetail(item.paintingId)}
+            >
+              <ImgSrcStyle
+                className="artlist"
                 src={item.imgSrc}
                 referrerPolicy="no-referrer"
-                style={{ maxWidth: "150%" }}
-              ></img>
-            )} */}
-            <ImageSrcStyle
-              src={item.imgSrc}
-              referrerPolicy="no-referrer"
-            ></ImageSrcStyle>
-            <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
-          </ImageStyle>
+              />
+            </ImageStyle>
+
+            {item.titleOrigin === null ? (
+              <ImageTitleStyle>{item.titleKr}</ImageTitleStyle>
+            ) : (
+              <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
+            )}
+            {/* <ImageTitleStyle> {item.titleKr}</ImageTitleStyle> */}
+          </ImgtitleContainer>
         ))}
         <ListPageEnd ref={pageEnd}></ListPageEnd>
       </ImageContainer>

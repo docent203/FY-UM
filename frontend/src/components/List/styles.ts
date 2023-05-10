@@ -2,6 +2,10 @@ import styled from "styled-components";
 import PainterBackImg from "../../assets/images/listPainterBackground.png";
 import ArtTrendBackImg from "../../assets/images/listArtTrendBackground.png";
 import ThemeBackImg from "../../assets/images/listThemeBackground.png";
+import ExListBackImg from "../../assets/images/exListBackgroundImg.png";
+import MyDrawingBackImg from "../../assets/images/myDrawingsBackgroundImg.png";
+
+import FrameImg from "../../assets/images/frameImg.png";
 
 export const ListContainer = styled.div<{ add: string }>`
   height: 100%;
@@ -11,11 +15,23 @@ export const ListContainer = styled.div<{ add: string }>`
       ? `url(${PainterBackImg})`
       : props.add === "art-trend"
       ? `url(${ArtTrendBackImg})`
-      : `url(${ThemeBackImg})`};
+      : props.add === "theme"
+      ? `url(${ThemeBackImg})`
+      : props.add === "exhibition-list"
+      ? `url(${ExListBackImg})`
+      : props.add === "mydrawing"
+      ? `url(${MyDrawingBackImg})`
+      : ""};
+
+  // 수정
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  //
+
   @media screen and (max-width: 768px) {
-    position: absolute;
-    top: -3%;
-    height: 103%;
   }
 `;
 
@@ -28,15 +44,18 @@ export const ImageStyle = styled.div`
   cursor: pointer;
 `;
 
-export const ImageSrcStyle = styled.img<{ src: string }>`
-  src: ${(props) => props.src};
-  max-width: 100vw;
-  @media screen and (max-width: 768px) {
-    max-width: 150%;
-  }
+export const FrameContainer = styled.div`
+  position: absolute;
+  right: 3%;
+  bottom: 3%;
+  width: 101%;
+  height: 102%;
 `;
 
-export const ListPageEnd = styled.div`
-  margin-left: -1%;
-  /* visibility: hidden; */
+export const Frame = styled.img.attrs({
+  src: `${FrameImg}`,
+})`
+  object-fit: fill;
+  width: 120%;
+  height: 120%;
 `;
