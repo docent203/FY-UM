@@ -2,7 +2,13 @@ import { IntroDiv, TextDiv, LogoText, IntroText, MobileText } from "./styles";
 const Intro = () => {
   return (
     <>
-      <IntroDiv />
+      <IntroDiv
+        src={process.env.PUBLIC_URL + "/videos/intro.mp4"}
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
       <TextDiv>
         <LogoText>FY:UM</LogoText>
         <br></br>

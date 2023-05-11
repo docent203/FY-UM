@@ -3,15 +3,12 @@ import IntroImg from "../../assets/images/introImg.png";
 import { white } from "../../styles/colors";
 
 //배경사진
-export const IntroDiv = styled.img.attrs({
-  src: `${IntroImg}`,
-})`
+export const IntroDiv = styled.video`
   height: 100vh;
   width: 100vw;
   object-fit: fill;
   position: absolute;
   z-index: -1;
-  filter: brightness(40%);
   @media (max-width: 768px) {
     object-fit: cover;
   }
