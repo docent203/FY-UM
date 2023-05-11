@@ -7,6 +7,12 @@ export const ArtListContainer = styled.div`
   height: 100%;
   width: 100%;
   background-image: url(${BackImg});
+
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   @media screen and (max-width: 768px) {
     position: absolute;
     top: -3%;
