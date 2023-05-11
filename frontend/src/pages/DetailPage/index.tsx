@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import {
   getDetailApi,
   fullBookmarkApi,
   emptyBookmarkApi,
   fullFrameApi,
   emptyFrameApi,
+  addLikedApi,
+  getCurationApi,
 } from "../../store/api";
-import { useLocation } from "react-router-dom";
+import audioDecoder from "../../components/utils/audioDecoder";
 
 import {
   DetailContainer,
@@ -19,7 +22,9 @@ import {
   ContentDiv,
   DetailDiv,
   AbsoluteDiv,
+  SpeakerDiv,
   SpeakerImg,
+  MuteIcStyle,
   DescriptionBtn,
   DescriptionP,
   MarkContainer,
@@ -56,7 +61,9 @@ const DetailPage = () => {
   const [description, setDescription] = useState(true);
   const [frame, setFrame] = useState(false);
   const [bookmark, setBookmark] = useState(false);
-  // const [speak, setSpeak] = useState(false);
+
+  const [curation, setCuration] = useState<string>("");
+  const [isPlay, setIsPlay] = useState(false);
 
   // 받아온 데이터 저장
   const [data, setData] = useState<detailInfo>({
@@ -99,6 +106,19 @@ const DetailPage = () => {
       }
     };
     getDetailData();
+
+    // 큐레이션 음성 받아오기
+    const getCuration = async () => {
+      try {
+        const res = await getCurationApi(paintingId);
+        setCuration(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCuration();
+
+    // 음성 변환
   }, []);
 
   // 찜하기 api
@@ -111,7 +131,15 @@ const DetailPage = () => {
           console.log("찜하기 실패", error);
         }
       };
+      const addLikedList = async () => {
+        try {
+          await addLikedApi();
+        } catch (err) {
+          console.log("찜하기 반영 실패", err);
+        }
+      };
       fullBookmark();
+      addLikedList();
     } else {
       const emptyBookmark = async () => {
         try {
@@ -154,7 +182,38 @@ const DetailPage = () => {
     }
   };
 
+  // 이미지
   const imgURL = data.imgSrc;
+
+  // 큐레이션 재생
+  const onClickPlay = () => {
+    setIsPlay(true);
+  };
+
+  // 큐레이션 중지
+  const onClickStop = () => {
+    setIsPlay(false);
+    audio.pause();
+  };
+
+  useEffect(() => {
+    if (isPlay) {
+      playAudio();
+    }
+  }, [isPlay]);
+
+  // 오디오 객체 생성
+  const audio = new Audio();
+
+  const playAudio = () => {
+    const decodedAudioData = audioDecoder(curation);
+    const blob = new Blob([decodedAudioData], { type: "audio/mp3" });
+    const url = URL.createObjectURL(blob);
+    audio.src = url;
+
+    // 오디오 재생
+    audio.play();
+  };
 
   return (
     <DetailContainer>
@@ -180,8 +239,14 @@ const DetailPage = () => {
             <ContentDiv>
               <Content>{data.description}</Content>
             </ContentDiv>
+            <SpeakerDiv>
+              {isPlay === false ? (
+                <SpeakerImg onClick={onClickPlay} />
+              ) : (
+                <MuteIcStyle onClick={onClickStop} />
+              )}
+            </SpeakerDiv>
           </AbsoluteDiv>
-          {/* <SpeakerImg /> */}
         </ContentContainer>
       ) : null}
       <FixedContainer>

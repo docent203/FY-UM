@@ -27,6 +27,10 @@ export const getDetailApi = async (paintingId: string) => {
   }
 };
 
+// 큐레이션 받아오기
+export const getCurationApi = async (paintingId: string) =>
+  await customAxios.get(`paintings/curation/${paintingId}`);
+
 // 찜하기 api
 export const fullBookmarkApi = async (paintingId: string) => {
   await customAxios.post(`wishlist/${paintingId}`);
@@ -53,9 +57,11 @@ export const likedListApi = async () => await customAxios.get("wishlist");
 // 전시회 저장 api
 export const fullFrameApi = async (paintingId: string) =>
   await customAxios.post("exhibitions", { paintingId });
+
 // 전시회 저장 취소 api
 export const emptyFrameApi = async (paintingId: string) =>
   await customAxios.put("exhibitions", { paintingId });
+
 // 전시회 리스트 받아오기
 export const getExhibitionListApi = async () =>
   await customAxios.get("exhibitions");
@@ -125,3 +131,6 @@ export const getArtListApi = async ({
 // 사용자 gallery 검색 api
 export const getGalleryCodeApi = async (galleryCode: string) =>
   await customAxios.get(`members/roomcode/${galleryCode}`);
+
+// 찜하기 이후에 추천결과 반영하기
+export const addLikedApi = async () => await djangoAxios.get("/recomm/test");

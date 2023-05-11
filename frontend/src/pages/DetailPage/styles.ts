@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { black, white } from "../../styles/colors";
+import { black, white, pink } from "../../styles/colors";
 import { ReactComponent as EmptyFrame } from "../../assets/icon/empty_frame.svg";
 import { ReactComponent as EmptyBookmark } from "../../assets/icon/empty_bookmark.svg";
 import { ReactComponent as FullFrame } from "../../assets/icon/full_frame.svg";
 import { ReactComponent as FullBookmark } from "../../assets/icon/full_bookmark.svg";
 import { ReactComponent as Speaker } from "../../assets/icon/speaker.svg";
+import { ReactComponent as MuteIc } from "../../assets/icon/muteIc.svg";
 
 interface BackgroundImgProps {
   src: string;
@@ -118,7 +119,6 @@ export const DetailDiv = styled.div`
 `;
 
 export const ContentDiv = styled.div`
-  position: absolute;
   width: 90%;
   height: 160%;
   overflow-y: auto;
@@ -142,6 +142,11 @@ export const ContentDiv = styled.div`
   }
 `;
 
+export const SpeakerDiv = styled.div`
+  position: relative;
+  margin-top: 2%;
+`;
+
 export const Content = styled.p`
   font-size: 1vw;
   font-family: "SUIT";
@@ -158,8 +163,30 @@ export const Content = styled.p`
 `;
 
 export const SpeakerImg = styled(Speaker)`
-  width: 3vw;
+  width: 2vw;
+  height: 2vw;
   fill: ${white};
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      fill: ${pink[200]};
+    }
+  }
+`;
+
+export const MuteIcStyle = styled(MuteIc)`
+  width: 2vw;
+  height: 2vw;
+  fill: ${white};
+  top: 5vh;
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      fill: ${pink[200]};
+    }
+  }
 `;
 
 export const DescriptionBtn = styled.div`
