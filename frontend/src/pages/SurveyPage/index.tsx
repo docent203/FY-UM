@@ -66,7 +66,6 @@ const SurveyPage = () => {
     }
   };
 
-  console.log(choosed);
   return (
     <BackgroundContainer>
       <SurveyContainer>
