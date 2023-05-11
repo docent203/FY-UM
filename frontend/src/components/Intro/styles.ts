@@ -1,17 +1,37 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import IntroImg from "../../assets/images/introImg.png";
 import { white } from "../../styles/colors";
 
-//배경사진
-export const IntroDiv = styled.img.attrs({
-  src: `${IntroImg}`,
-})`
+interface ClickHereProps {
+  position: { x: number; y: number };
+}
+
+// fadeIn 애니메이션 추가
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+export const IntroDiv = styled.div`
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  cursor: pointer;
+`;
+
+//배경영상
+export const IntroVideo = styled.video`
+  height: 100%;
+  width: 100%;
   object-fit: fill;
   position: absolute;
   z-index: -1;
-  filter: brightness(40%);
+
   @media (max-width: 768px) {
     object-fit: cover;
   }
@@ -31,11 +51,16 @@ export const TextDiv = styled.div`
     left: -4%;
   }
 `;
+
 export const LogoText = styled.div`
   color: ${white};
   font-weight: 700;
   font-size: 8vw;
   margin-bottom: -3%;
+  opacity: 0;
+  animation: ${fadeIn} 1.5s ease-in forwards;
+  animation-delay: 0.5s;
+
   @media (max-width: 768px) {
     margin-bottom: 0%;
 
@@ -50,12 +75,17 @@ export const IntroText = styled.div`
   color: ${white};
   font-weight: 700;
   font-size: 3.4vw;
+  opacity: 0;
+  animation: ${fadeIn} 1.5s ease-in forwards;
+  animation-delay: 1s;
+
   @media (max-width: 768px) {
     text-align: center;
     margin: -3%;
     font-size: 2vw;
   }
 `;
+
 export const MobileText = styled.div`
   display: none;
   @media (max-width: 768px) {
@@ -67,4 +97,19 @@ export const MobileText = styled.div`
     left: 35%;
     font-size: 7vw;
   }
+`;
+
+export const ClickHere = styled.div<ClickHereProps>`
+  transform: translate(
+    ${(props) => props.position.x}px,
+    ${(props) => props.position.y}px
+  );
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+export const ClickText = styled.p`
+  color: gray;
 `;
