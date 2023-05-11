@@ -12,7 +12,6 @@ import {
   OtherGalleryContainer,
   OtherGalleryEnterStyle,
   OtherGalleryImgStyle,
-  OtherGallerySearchNullStyle,
   OtherGallerySearchStyle,
   OtherGalleryTextStyle,
 } from "./styles";
