@@ -237,13 +237,13 @@ const DetailPage = () => {
             </DetailDiv>
             <ContentDiv>
               <Content>{data.description}</Content>
-              {isPlay === false ? (
-                <SpeakerImg onClick={onClickPlay} />
-              ) : (
-                <MuteIcStyle onClick={onClickStop} />
-              )}
             </ContentDiv>
           </AbsoluteDiv>
+          {isPlay === false ? (
+            <SpeakerImg onClick={onClickPlay} />
+          ) : (
+            <MuteIcStyle onClick={onClickStop} />
+          )}
         </ContentContainer>
       ) : null}
       <FixedContainer>
