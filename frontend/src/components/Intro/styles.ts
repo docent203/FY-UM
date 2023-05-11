@@ -1,6 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import IntroImg from "../../assets/images/introImg.png";
 import { white } from "../../styles/colors";
+
+// 서서히 나타나는 효과
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 //배경사진
 export const IntroDiv = styled.video`
@@ -21,6 +31,7 @@ export const TextDiv = styled.div`
   width: 100%;
   position: fixed;
   bottom: 0px;
+  animation: ${fadeIn} 1.5s ease-in; /* fade-in 애니메이션을 적용합니다. */
 
   @media (max-width: 768px) {
     top: 27%;
@@ -33,6 +44,7 @@ export const LogoText = styled.div`
   font-weight: 700;
   font-size: 8vw;
   margin-bottom: -3%;
+
   @media (max-width: 768px) {
     margin-bottom: 0%;
 
