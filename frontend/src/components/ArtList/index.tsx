@@ -166,7 +166,6 @@ const ArtList = () => {
               </ImageTitleStyle>
             ) : (
               <ImageTitleStyle title={"artList"}>
-                {" "}
                 {item.titleOrigin}
               </ImageTitleStyle>
             )}
