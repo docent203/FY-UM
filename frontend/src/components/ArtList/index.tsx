@@ -127,22 +127,24 @@ const ArtList = () => {
       ])
     );
   }, [[nameKr, nameEn, infoState]]);
+
   return (
-    <ArtListContainer>
-      <ImageContainer ref={scrollRef}>
-        {artListUrl === "themes" ? (
-          <></>
-        ) : onOff === true ? (
-          <SideBar onOff={onOff} setOnOff={setOnOff}></SideBar>
-        ) : (
-          <></>
-        )}
-        {artListData.map((item: any) => (
-          <ImageStyle
-            key={item.paintingId}
-            onClick={() => goDetail(item.paintingId)}
-          >
-            {/* {window.innerWidth > 768 ? (
+    <>
+      {artListUrl === "themes" ? (
+        <></>
+      ) : onOff === true ? (
+        <SideBar onOff={onOff} setOnOff={setOnOff}></SideBar>
+      ) : (
+        <></>
+      )}
+      <ArtListContainer>
+        <ImageContainer ref={scrollRef}>
+          {artListData.map((item: any) => (
+            <ImageStyle
+              key={item.paintingId}
+              onClick={() => goDetail(item.paintingId)}
+            >
+              {/* {window.innerWidth > 768 ? (
               <img src={item.imgSrc} referrerPolicy="no-referrer"></img>
             ) : (
               <img
@@ -151,23 +153,24 @@ const ArtList = () => {
                 style={{ maxWidth: "150%" }}
               ></img>
             )} */}
-            <ImageSrcStyle
-              src={item.imgSrc}
-              referrerPolicy="no-referrer"
-            ></ImageSrcStyle>
-            <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
-          </ImageStyle>
-        ))}
-        <ListPageEnd ref={pageEnd}></ListPageEnd>
-      </ImageContainer>
-      {artListUrl === "themes" ? (
-        <></>
-      ) : (
-        <DescriptionBtn onClick={changeState}>
-          <DescriptionP info={true}>Info.</DescriptionP>
-        </DescriptionBtn>
-      )}
-    </ArtListContainer>
+              <ImageSrcStyle
+                src={item.imgSrc}
+                referrerPolicy="no-referrer"
+              ></ImageSrcStyle>
+              <ImageTitleStyle> {item.titleOrigin}</ImageTitleStyle>
+            </ImageStyle>
+          ))}
+          <ListPageEnd ref={pageEnd}></ListPageEnd>
+        </ImageContainer>
+        {artListUrl === "themes" ? (
+          <></>
+        ) : (
+          <DescriptionBtn onClick={changeState}>
+            <DescriptionP info={true}>Info.</DescriptionP>
+          </DescriptionBtn>
+        )}
+      </ArtListContainer>
+    </>
   );
 };
 export default ArtList;
