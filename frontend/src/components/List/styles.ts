@@ -29,5 +29,4 @@ export const ImageSrcStyle = styled.img<{ src: string }>`
 
 export const ListPageEnd = styled.div`
   margin-left: -1%;
-  /* visibility: hidden; */
 `;
