@@ -71,12 +71,11 @@ public class MyDrawingService {
         amazonS3.putObject(request.withCannedAcl(CannedAccessControlList.PublicRead));
 
         myDrawing.setImgSrc(perfix + filename);
-        MyDrawing savedDrawing = myDrawingRepository.save(myDrawing);
-        int pId = savedDrawing.getId();
+        int pId = myDrawingRepository.save(myDrawing).getId();
 
         new Thread(() -> {
             try {
-                curationService.getImagga(myDrawing);
+                curationService.getImagga(pId, "MD");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

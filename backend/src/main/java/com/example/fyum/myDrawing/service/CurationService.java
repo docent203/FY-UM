@@ -1,7 +1,9 @@
 package com.example.fyum.myDrawing.service;
 
 import com.example.fyum.myDrawing.entity.MyDrawing;
+import com.example.fyum.myDrawing.entity.MyPicture;
 import com.example.fyum.myDrawing.repository.MyDrawingRepository;
+import com.example.fyum.myDrawing.repository.MyPictureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +39,7 @@ import org.springframework.http.HttpHeaders;
 public class CurationService {
 
     private final MyDrawingRepository myDrawingRepository;
+    private final MyPictureRepository myPictureRepository;
 
     JsonParser parser = new JsonParser();
     @Value("${imagga.key}")
@@ -48,13 +51,28 @@ public class CurationService {
     @Value("${google.key}")
     String googleKey;
 
-    void getImagga(MyDrawing myDrawing) throws Exception {
+    void getImagga(int pId, String dtype) throws Exception {
+        String image_url;
+        String description;
+        MyDrawing myDrawing = null;
+        MyPicture myPicture = null;
+
+        if (dtype.equals("MD")) {
+            myDrawing = myDrawingRepository.findById(pId).orElseThrow(NullPointerException::new);
+            image_url = myDrawing.getImgSrc();
+            description = myDrawing.getDescription();
+        } else {
+            myPicture = myPictureRepository.findById(pId).orElseThrow(NullPointerException::new);
+            image_url = myPicture.getImgSrc();
+            description = myPicture.getDescription();
+        }
+
         String credentialsToEncode = immagaKey + ":" + immagaSecret;
         String basicAuth = Base64.getEncoder()
             .encodeToString(credentialsToEncode.getBytes(StandardCharsets.UTF_8));
 
         String endpoint_url = "https://api.imagga.com/v2/tags";
-        String image_url = myDrawing.getImgSrc();
+
 
         String url = endpoint_url + "?image_url=" + image_url;
         URL urlObject = new URL(url);
@@ -90,10 +108,17 @@ public class CurationService {
         sb.append("]");
         System.out.println(sb.toString());
 
-        String curation = gptgo(myDrawing.getDescription() + sb.toString());
+        String curation = gptgo(description + sb.toString());
 
-        myDrawing.setCuration(curation);
-        myDrawingRepository.save(myDrawing);
+        // 저장
+        if (dtype.equals("MD")) {
+            myDrawing.setCuration(curation);
+            myDrawingRepository.save(myDrawing);
+        } else {
+            myPicture.setCuration(curation);
+            myPictureRepository.save(myPicture);
+        }
+
     }
 
 
