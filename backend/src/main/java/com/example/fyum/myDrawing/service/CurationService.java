@@ -1,8 +1,9 @@
-package com.example.fyum.myDrawing.controller;
+package com.example.fyum.myDrawing.service;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.fyum.myDrawing.entity.MyDrawing;
+import com.example.fyum.myDrawing.repository.MyDrawingRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -23,7 +24,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -32,13 +32,11 @@ import java.util.*;
 
 import org.springframework.http.HttpHeaders;
 
-@RestController
-@CrossOrigin("*")
-public class CurationController {
-    @GetMapping("/test")
-    String hello() {
-        return "Hello World!";
-    }
+@Service
+@RequiredArgsConstructor
+public class CurationService {
+
+    private final MyDrawingRepository myDrawingRepository;
 
     JsonParser parser = new JsonParser();
     @Value("${imagga.key}")
@@ -50,14 +48,13 @@ public class CurationController {
     @Value("${google.key}")
     String googleKey;
 
-
-    @GetMapping("/loadScript")
-    String test(@RequestParam("url") String receiveUrl) throws Exception {
+    void getImagga(MyDrawing myDrawing) throws Exception {
         String credentialsToEncode = immagaKey + ":" + immagaSecret;
-        String basicAuth = Base64.getEncoder().encodeToString(credentialsToEncode.getBytes(StandardCharsets.UTF_8));
+        String basicAuth = Base64.getEncoder()
+            .encodeToString(credentialsToEncode.getBytes(StandardCharsets.UTF_8));
 
         String endpoint_url = "https://api.imagga.com/v2/tags";
-        String image_url = receiveUrl;
+        String image_url = myDrawing.getImgSrc();
 
         String url = endpoint_url + "?image_url=" + image_url;
         URL urlObject = new URL(url);
@@ -70,7 +67,8 @@ public class CurationController {
         System.out.println("\nSending 'GET' request to URL : " + url);
         System.out.println("Response Code : " + responseCode);
 
-        BufferedReader connectionInput = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        BufferedReader connectionInput = new BufferedReader(
+            new InputStreamReader(connection.getInputStream()));
 
         String jsonResponse = connectionInput.readLine();
 
@@ -79,33 +77,46 @@ public class CurationController {
         System.out.println(jsonResponse);
 
         JsonElement element = parser.parse(jsonResponse);
-        JsonArray a = element.getAsJsonObject().get("result").getAsJsonObject().get("tags").getAsJsonArray();
+        JsonArray a = element.getAsJsonObject().get("result").getAsJsonObject().get("tags")
+            .getAsJsonArray();
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for (JsonElement je : a) {
-            sb.append("{confidence:" + Math.round(je.getAsJsonObject().get("confidence").getAsDouble()) + ", tag:" + je.getAsJsonObject().get("tag").getAsJsonObject().get("en") + "}, ");
+            sb.append(
+                "{confidence:" + Math.round(je.getAsJsonObject().get("confidence").getAsDouble())
+                    + ", tag:" + je.getAsJsonObject().get("tag").getAsJsonObject().get("en")
+                    + "}, ");
         }
         sb.append("]");
         System.out.println(sb.toString());
-        return gptgo(sb.toString());
+
+        String curation = gptgo(myDrawing.getDescription() + sb.toString());
+
+        myDrawing.setCuration(curation);
+        myDrawingRepository.save(myDrawing);
     }
 
 
     String gptgo(String gogogo) {
+        System.out.println(gogogo);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + gptKey);
 
         Map<String, Object> requestBody = new HashMap<>();
-        requestBody.put("model","text-davinci-003");
-        requestBody.put("prompt", "I will give you the factors and probabilities for the picture, so please write an analysis." + gogogo);
+        requestBody.put("model", "text-davinci-003");
+        requestBody.put("prompt",
+            "I will give you the comments from the artist and factors and probabilities for the picture, so please write an analysis in 5 sentences."
+                + gogogo);
         requestBody.put("temperature", 1.0f);
         requestBody.put("max_tokens", 1000);
 
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(requestBody, headers);
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Map> response = restTemplate.postForEntity("https://api.openai.com/v1/completions", requestEntity, Map.class);
+        ResponseEntity<Map> response = restTemplate.postForEntity(
+            "https://api.openai.com/v1/completions", requestEntity, Map.class);
         ArrayList al = (ArrayList) response.getBody().get("choices");
         LinkedHashMap<String, String> lhm = (LinkedHashMap<String, String>) al.get(0);
         String tt = lhm.get("text");
@@ -123,8 +134,9 @@ public class CurationController {
         String targetLanguage = "ko";
 
         // Translation 객체를 만들어서 번역을 실행합니다.
-        Translation translation = translate.translate(text, Translate.TranslateOption.sourceLanguage(sourceLanguage),
-                Translate.TranslateOption.targetLanguage(targetLanguage));
+        Translation translation = translate.translate(text,
+            Translate.TranslateOption.sourceLanguage(sourceLanguage),
+            Translate.TranslateOption.targetLanguage(targetLanguage));
 
         String resultText = translation.getTranslatedText();
         resultText = resultText.replace("&quot;", "");
