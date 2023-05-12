@@ -32,7 +32,7 @@ const Exhibition = () => {
   };
 
   const isClicked = () => {
-    goMyGallery(Number(search), galleryCode.userToken.split(" ")[1]);
+    goMyGallery(Number(search), galleryCode.userToken);
   };
 
   const getIsRoomCode = async (search: string) => {
