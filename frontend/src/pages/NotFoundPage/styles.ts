@@ -1,28 +1,32 @@
 import styled from "styled-components";
 import { white, black } from "../../styles/colors";
-import StrikImg from "../../assets/images/ophelia.png";
+import NotFoundImg from "../../assets/images/ophelia.png";
+
 export const NotFoundContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  position: relative;
   background: ${black};
+  overflow-y: hidden;
 `;
 
-export const ContentContainer = styled.div`
-  position: absolute;
-  display: flex;
-  top: 18%;
+export const BackgroundImg = styled.img.attrs({
+  src: `${NotFoundImg}`,
+})`
+  width: 100%;
+  height: 100%;
+  filter: brightness(30%);
+
+  @media (max-width: 768px) {
+    object-fit: cover;
+  }
 `;
 
 export const Content = styled.p`
-  margin-left: 5vw;
-  font-size: 3.5vw;
+  position: absolute;
+  font-size: 3vw;
   color: ${white};
-  margin-bottom: 2%;
-`;
-
-export const ContentImg = styled.img.attrs({
-  src: `${StrikImg}`,
-})`
-  width: 27vw;
-  margin-left: 20vw;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

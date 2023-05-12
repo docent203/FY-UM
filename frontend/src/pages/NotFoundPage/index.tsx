@@ -1,19 +1,10 @@
-import {
-  NotFoundContainer,
-  ContentContainer,
-  ContentImg,
-  Content,
-} from "./styles";
+import { NotFoundContainer, BackgroundImg, Content } from "./styles";
 
 const NotFoundPage = () => {
   return (
     <NotFoundContainer>
-      <ContentContainer>
-        <ContentImg />
-        <Content>
-          Sorry, <br /> page <br /> not found
-        </Content>
-      </ContentContainer>
+      <BackgroundImg />
+      <Content>Sorry, page not found</Content>
     </NotFoundContainer>
   );
 };
