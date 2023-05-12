@@ -43,12 +43,12 @@ export const MyGalleryTextStyle = styled.div`
   bottom: 10%;
   right: 5%;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 3.5vw;
   cursor: pointer;
 
   &.code {
     bottom: 3%;
-    font-size: 40px;
+    font-size: 2.8vw;
     cursor: auto;
   }
 `;
@@ -79,7 +79,7 @@ export const OtherGalleryTextStyle = styled.div`
   bottom: 10%;
   left: 5%;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 3.5vw;
 `;
 
 export const OtherGallerySearchContainer = styled.div`
@@ -89,17 +89,29 @@ export const OtherGallerySearchContainer = styled.div`
 
 export const SearchInputStyle = styled.input`
   position: absolute;
-  bottom: 5%;
+  bottom: 3.8%;
   left: 5%;
   border: 2px solid #959595;
-  height: 3%;
-  width: 50%;
+  height: 4%;
+  width: 30%;
   border-radius: 15px;
+  font-size: 1vw;
+  padding-left: 10px;
+
+  @media (max-width: 768px) {
+    width: 25%;
+  }
 `;
 
 export const SearchIcContainer = styled(SearchIc)`
   position: absolute;
-  bottom: 5.6%;
-  left: 51.5%;
+  bottom: 5.1%;
+  left: 33%;
   cursor: pointer;
+  @media (max-width: 768px) {
+    left: 29%;
+    bottom: 5.5%;
+    width: 10px;
+    height: 10px;
+  }
 `;
