@@ -3,6 +3,7 @@ import { grey, white } from "../../styles/colors";
 
 import leftImg from "../../assets/images/exhibitionLeftNoBackground.png";
 import rightImg from "../../assets/images/exhibitionRightNoBackground.png";
+import { ReactComponent as SearchIc } from "../../assets/icon/searchIc.svg";
 
 export const ExhibitionContainer = styled.div`
   width: 100%;
@@ -70,7 +71,7 @@ export const OtherGalleryImgStyle = styled.img.attrs({
   left: 50%;
 `;
 
-export const OtherGalleryEnterStyle = styled.div``;
+export const OtherGalleryEnterStyle = styled.label``;
 
 export const OtherGalleryTextStyle = styled.div`
   position: absolute;
@@ -79,10 +80,14 @@ export const OtherGalleryTextStyle = styled.div`
   left: 5%;
   font-weight: 700;
   font-size: 50px;
-  cursor: pointer;
 `;
 
-export const OtherGallerySearchStyle = styled.input`
+export const OtherGallerySearchContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+export const SearchInputStyle = styled.input`
   position: absolute;
   bottom: 5%;
   left: 5%;
@@ -90,4 +95,11 @@ export const OtherGallerySearchStyle = styled.input`
   height: 3%;
   width: 50%;
   border-radius: 15px;
+`;
+
+export const SearchIcContainer = styled(SearchIc)`
+  position: absolute;
+  bottom: 5.6%;
+  left: 51.5%;
+  cursor: pointer;
 `;
