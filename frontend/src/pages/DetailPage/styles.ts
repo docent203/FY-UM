@@ -229,11 +229,12 @@ export const MarkContainer = styled.div`
   }
 `;
 
-export const EmptyFrameIcStyle = styled(EmptyFrame)`
+export const EmptyFrameIcStyle = styled(EmptyFrame)<{ locate?: string }>`
   width: 1.8vw;
   fill: ${white};
   margin-right: 1vw;
   cursor: pointer;
+  visibility: ${(props) => (props.locate === "picture" ? "hidden" : "")};
 
   @media (max-width: 768px) {
     width: 3vw;
@@ -241,10 +242,11 @@ export const EmptyFrameIcStyle = styled(EmptyFrame)`
   }
 `;
 
-export const FullFrameIcStyle = styled(FullFrame)`
+export const FullFrameIcStyle = styled(FullFrame)<{ locate?: string }>`
   width: 1.8vw;
   margin-right: 1vw;
   cursor: pointer;
+  visibility: ${(props) => (props.locate === "picture" ? "hidden" : "")};
 
   @media (max-width: 768px) {
     width: 3vw;
