@@ -15,6 +15,6 @@ export const DeleteIcStyle = styled(DeleteIc)`
   }
 
   @media (max-width: 768px) {
-    width: 4vw;
+    width: 3.5vw;
   }
 `;
