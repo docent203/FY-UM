@@ -38,6 +38,10 @@ const Detail = ({
   const location = useLocation();
   const [description, setDescription] = useState(true);
 
+  const pathName = location.pathname;
+  const pathParts = pathName.split("/");
+  const locate = pathParts[2];
+
   const changeState = () => {
     setDescription(!description);
   };
@@ -74,10 +78,6 @@ const Detail = ({
 
   // 삭제
   const onDelete = () => {
-    const pathName = location.pathname;
-    const pathParts = pathName.split("/");
-    const locate = pathParts[2];
-
     if (locate === "painting") {
       const deleteRequest = async () => {
         try {
@@ -133,9 +133,9 @@ const Detail = ({
         {description && (
           <MarkContainer className="etc">
             {frame === false ? (
-              <EmptyFrameIcStyle onClick={changeFrame} />
+              <EmptyFrameIcStyle onClick={changeFrame} locate={locate} />
             ) : (
-              <FullFrameIcStyle onClick={changeFrame} />
+              <FullFrameIcStyle onClick={changeFrame} locate={locate} />
             )}
             <DeleteIcStyle onClick={onDelete} />
           </MarkContainer>
