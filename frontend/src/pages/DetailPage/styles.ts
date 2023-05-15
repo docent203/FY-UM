@@ -215,6 +215,8 @@ export const MarkContainer = styled.div`
   position: absolute;
   bottom: 3vh;
   right: 2.6vw;
+  display: flex;
+  align-items: center;
 
   &.etc {
     display: flex;
@@ -222,30 +224,30 @@ export const MarkContainer = styled.div`
   }
 
   @media (max-width: 768px) {
-    bottom: 0.1vh;
-    right: 5vw;
+    bottom: 0.5vh;
+    right: 7vw;
   }
 `;
 
 export const EmptyFrameIcStyle = styled(EmptyFrame)`
-  width: 2vw;
+  width: 1.8vw;
   fill: ${white};
   margin-right: 1vw;
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 4vw;
+    width: 3vw;
     margin-right: 2vw;
   }
 `;
 
 export const FullFrameIcStyle = styled(FullFrame)`
-  width: 2vw;
+  width: 1.8vw;
   margin-right: 1vw;
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 4vw;
+    width: 3vw;
     margin-right: 2vw;
   }
 `;
@@ -257,9 +259,8 @@ export const EmptyHeartIcStyle = styled(EmptyHeart)`
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 5vw;
-    height: 5vw;
-    margin-bottom: 2.6vw;
+    width: 3.5vw;
+    height: 3.5vw;
   }
 `;
 
@@ -269,8 +270,8 @@ export const FullHeartIcStyle = styled(FullHeart)`
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 5vw;
-    height: 5vw;
+    width: 3.5vw;
+    height: 3.5vw;
     margin-bottom: 2.6vw;
   }
 `;
