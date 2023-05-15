@@ -21,6 +21,8 @@ import {
   MarkContainer,
   EmptyFrameIcStyle,
   FullFrameIcStyle,
+  ArrowBox,
+  ArrowStyle,
 } from "../../pages/DetailPage/styles";
 import { SpeakerImg, MuteIcStyle } from "../../pages/DetailPage/styles";
 import { DeleteIcStyle } from "./styles";
@@ -37,6 +39,7 @@ const Detail = ({
   const navigate = useNavigate();
   const location = useLocation();
   const [description, setDescription] = useState(true);
+  const [isArrowBoxVisible, setArrowBoxVisible] = useState(false);
 
   const pathName = location.pathname;
   const pathParts = pathName.split("/");
@@ -133,7 +136,20 @@ const Detail = ({
         {description && (
           <MarkContainer className="etc">
             {frame === false ? (
-              <EmptyFrameIcStyle onClick={changeFrame} locate={locate} />
+              <>
+                <EmptyFrameIcStyle
+                  onClick={changeFrame}
+                  onMouseEnter={() => setArrowBoxVisible(true)}
+                  onMouseLeave={() => setArrowBoxVisible(false)}
+                  locate={locate}
+                />
+                {isArrowBoxVisible && (
+                  <ArrowBox>
+                    <span>전시회 리스트에 저장하기</span>
+                    <ArrowStyle />
+                  </ArrowBox>
+                )}
+              </>
             ) : (
               <FullFrameIcStyle onClick={changeFrame} locate={locate} />
             )}
