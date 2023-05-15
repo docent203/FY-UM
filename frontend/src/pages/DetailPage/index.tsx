@@ -121,8 +121,6 @@ const DetailPage = () => {
       }
     };
     getCuration();
-
-    // 음성 변환
   }, []);
 
   // 찜하기 api
@@ -191,7 +189,12 @@ const DetailPage = () => {
 
   // 큐레이션 재생
   const onClickPlay = () => {
-    setIsPlay(true);
+    if (curation) {
+      setIsPlay(true);
+    } else {
+      alert("다시 시도해주세요.")
+    }
+    
   };
 
   // 큐레이션 중지
@@ -218,6 +221,13 @@ const DetailPage = () => {
     // 오디오 재생
     audio.play();
   };
+
+  useEffect(() => {
+    // 다른 페이지로 이동시 audio 멈추기
+    return () => {
+      window.location.reload();
+    };
+  }, []);
 
   return (
     <DetailContainer>
