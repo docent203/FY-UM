@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import { white, black } from "./colors";
+import { white, black, pink } from "./colors";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { ReactComponent as RightArrowIc } from "../assets/icon/rightArrowIc.svg";
 
 export const ListBackgroundContainer = styled.div<{ backgroundimg: string }>`
   height: 100vh;
@@ -158,9 +159,10 @@ export const ImgtitleContainer = styled.div`
   }
 `;
 
-export const ImageTitleStyle = styled.div<{ title?: string }>`
+export const ImageTitleStyle = styled.div<{ title?: string; length?: number }>`
   font-weight: 500;
-  font-size: 20px;
+  font-size: ${(props) =>
+    props.length && props.length >= 30 ? "15px" : "18px"};
   width: 100%;
   text-align: center;
 
@@ -188,4 +190,46 @@ export const InvisibleBox = styled.div`
   width: 800%;
   height: 800%;
   visibility: hidden;
+`;
+
+export const FixedContainer = styled.div`
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+`;
+
+export const UploadBtn = styled.div`
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+`;
+
+export const GoPageBtn = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "SUIT";
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 44px;
+  color: ${white};
+  margin-right: 5px;
+
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: ${pink[200]};
+    }
+  }
+`;
+
+export const ArrowStyle = styled(RightArrowIc)`
+  width: 52px;
+  height: 13px;
+  fill: ${white};
 `;

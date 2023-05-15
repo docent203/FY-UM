@@ -16,14 +16,11 @@ import {
   ImgSrcStyle,
   ImageTitleStyle,
   InvisibleBox,
-} from "../../styles/listStyles";
-
-import {
   FixedContainer,
   UploadBtn,
-  GoExhibitionBtn,
+  GoPageBtn,
   ArrowStyle,
-} from "./styles";
+} from "../../styles/listStyles";
 
 interface DetailProps {
   id: number;
@@ -77,7 +74,10 @@ const ExhibitionList = () => {
       <ImageContainer className="artlist exhibition-list" ref={scrollRef}>
         {data &&
           data.map((item: any) => (
-            <ImgtitleContainer className="artlist exhibition-list ">
+            <ImgtitleContainer
+              className="artlist exhibition-list"
+              key={item.paintingId}
+            >
               <ImageStyle
                 className="artlist"
                 key={item.paintingId}
@@ -94,7 +94,9 @@ const ExhibitionList = () => {
                   />
                 }
               </ImageStyle>
-              <ImageTitleStyle>{item.title}</ImageTitleStyle>
+              <ImageTitleStyle length={item.title.length}>
+                {item.title}
+              </ImageTitleStyle>
             </ImgtitleContainer>
           ))}
         {data.length < 4 && <InvisibleBox />}
@@ -103,10 +105,10 @@ const ExhibitionList = () => {
         <UploadBtn onClick={openUpload}>
           <Btn type="transparent" text="Upload" language="en" />
         </UploadBtn>
-        <GoExhibitionBtn onClick={goExhibition}>
+        <GoPageBtn onClick={goExhibition}>
           Go Exhibition
           <ArrowStyle />
-        </GoExhibitionBtn>
+        </GoPageBtn>
       </FixedContainer>
     </>
   );

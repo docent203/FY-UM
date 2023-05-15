@@ -8,6 +8,10 @@ import {
   ImageStyle,
   ImgSrcStyle,
   ImageTitleStyle,
+  FixedContainer,
+  UploadBtn,
+  GoPageBtn,
+  ArrowStyle,
 } from "../../styles/listStyles";
 
 import { useHorizontalScroll } from "../utils/useSideScroll";
@@ -34,12 +38,16 @@ const MyDrawings = () => {
     navigate(`/detail/painting/${id}`);
   };
 
+  const goDrawing = () => {
+    navigate("/drawing");
+  };
+
   return (
     <>
-      <ImageContainer className="etc" ref={scrollRef}>
+      <ImageContainer className="artlist exhibition-list" ref={scrollRef}>
         {data &&
           data.map((item: any) => (
-            <ImgtitleContainer className="artlist" key={item.paintingId}>
+            <ImgtitleContainer className="artlist exhibition-list" key={item.paintingId}>
               <ImageStyle
                 className="artlist"
                 key={item.paintingId}
@@ -55,12 +63,18 @@ const MyDrawings = () => {
                   />
                 }
               </ImageStyle>
-              <ImageTitleStyle key={`title-${item.paintingId}`}>
+              <ImageTitleStyle length={item.title.length} key={`title-${item.paintingId}`}>
                 {item.title}
               </ImageTitleStyle>
             </ImgtitleContainer>
           ))}
       </ImageContainer>
+      <FixedContainer>
+        <GoPageBtn onClick={goDrawing}>
+          Go Drawing
+          <ArrowStyle />
+        </GoPageBtn>
+      </FixedContainer>
     </>
   );
 };

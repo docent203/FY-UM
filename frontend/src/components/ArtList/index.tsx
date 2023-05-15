@@ -158,11 +158,11 @@ const ArtList = () => {
                 />
               </ImageStyle>
               {item.titleOrigin === null ? (
-                <ImageTitleStyle title={"artList"}>
+                <ImageTitleStyle title={"artList"} length={item.titleKr.length}>
                   {item.titleKr}
                 </ImageTitleStyle>
               ) : (
-                <ImageTitleStyle title={"artList"}>
+                <ImageTitleStyle title={"artList"} length={item.titleOrigin.length}>
                   {item.titleOrigin}
                 </ImageTitleStyle>
               )}
