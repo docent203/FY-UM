@@ -143,6 +143,13 @@ const Detail = ({
     audio.play();
   };
 
+  useEffect(() => {
+    // 다른 페이지로 이동시 audio 멈추기
+    return () => {
+      window.location.reload()
+    };
+  }, []);
+
   console.log("데이터 잘넘어옴?", data);
 
   return (
