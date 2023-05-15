@@ -5,7 +5,8 @@ import { ReactComponent as DeleteIc } from "../../assets/icon/deleteIc.svg";
 
 export const DeleteIcStyle = styled(DeleteIc)`
   fill: ${grey[100]};
-  width: 2vw;
+  width: 1.6vw;
+  align-self: center;
 
   @media (hover: hover) {
     &:hover {
