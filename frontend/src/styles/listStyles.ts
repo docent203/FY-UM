@@ -75,6 +75,7 @@ export const ImageContainer = styled.div<{ ref: any }>`
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    overflow-x: hidden;
     gap: 100px;
     padding-right: 0px;
 
