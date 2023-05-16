@@ -196,7 +196,8 @@ public class MemberService {
         }
     }
 
-    public Boolean ifRoomCodeSameTocken(String roomCode, String kakaoId){
+    public Boolean ifRoomCodeSameTocken(String roomCode, String token){
+        String kakaoId = JwtUtil.getMemberId(token,key);
         Member member = memberRepository.findByKakaoId(kakaoId);
         if(member.getRoomCode().equals(roomCode)){
             return true;
