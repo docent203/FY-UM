@@ -196,4 +196,12 @@ public class MemberService {
         }
     }
 
+    public Boolean ifRoomCodeSameTocken(String roomCode, String kakaoId){
+        Member member = memberRepository.findByKakaoId(kakaoId);
+        if(member.getRoomCode().equals(roomCode)){
+            return true;
+        }
+        return false;
+    }
+
 }
