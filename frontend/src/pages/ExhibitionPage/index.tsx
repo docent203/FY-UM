@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
+import { RootState } from "../../store";
 import Exhibition from "../../components/Exhibition";
 import useModal from "../../components/utils/useModal";
+import { exhibitionModalActions } from "../../store/exhibitonModalSlice";
 
 const ExhibitionPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { openModal, closeModal } = useModal();
+  const { isFirst } = useSelector((state: RootState) => state.exhibitionModal);
 
   // 뒤로가기
   const goBack = () => {
@@ -21,7 +26,10 @@ const ExhibitionPage = () => {
   };
 
   useEffect(() => {
-    openModal(modalContent);
+    if (isFirst === false) {
+      openModal(modalContent);
+    }
+    dispatch(exhibitionModalActions.closeModal());
     return () => closeModal();
   }, []);
 
