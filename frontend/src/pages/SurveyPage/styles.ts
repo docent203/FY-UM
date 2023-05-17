@@ -6,7 +6,7 @@ interface artworkImgInfo {
   choosed: boolean;
 }
 export const BackgroundContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: ${black};
   position: relative;
