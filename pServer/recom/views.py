@@ -29,7 +29,7 @@ def get_recom_paintings(request):
     res = []
     for i in id_list:
         print(i)
-        for j in rec(i):
+        for j in rec(i+1):
             res.append([j,check(j)]) #그림 아이디 받을거니까 -1 해줘야 할듯******
     
     '''설문응답 받는 동시에 저장'''
