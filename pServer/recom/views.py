@@ -9,6 +9,7 @@ from rest_framework import status
 from .recomed import rec,check
 from .models import Recommend,Member,Masterpiece,Wishlist
 import jwt
+import random
 
 
 
@@ -30,6 +31,7 @@ def get_recom_paintings(request):
         print(i)
         for j in rec(i):
             res.append([j,check(j)]) #그림 아이디 받을거니까 -1 해줘야 할듯******
+    
     '''설문응답 받는 동시에 저장'''
     auth_header = request.META.get('HTTP_AUTHORIZATION')
     memid = 6;
@@ -168,6 +170,9 @@ def CF_recommed(request):
     print(rcomlist)      
     rcomlist = list(set(rcomlist)) # 혹시 같은거 지워주고
     print(rcomlist)
+    
+    random.shuffle(rcomlist)
+    
     rcomlist = rcomlist[0:10] #10개로 자르고
     print(rcomlist)
     
