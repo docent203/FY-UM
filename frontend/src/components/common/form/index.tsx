@@ -72,8 +72,8 @@ const Form = ({ type }: FormProps) => {
 
       for (let i = 0; i < str.length; i += 1) {
         character = str.charAt(i);
-        if (escape(character).length > 4) charBytes += 2;
-        else charBytes += 1;
+        const encodedChar = encodeURIComponent(character);
+        charBytes += encodedChar.length;
       }
 
       return charBytes;
@@ -131,14 +131,12 @@ const Form = ({ type }: FormProps) => {
           let [_, base64EncodedUrl] = result.split(",");
 
           // 10MB 이하의 파일만 업로드 가능함
-          const sizeInBytes =
-            4 *
-            Math.ceil(base64EncodedUrl.length / 3) *
-            0.5624896334383812 *
-            1.4;
-          const sizeInMB = sizeInBytes / (1024 * 1024);
-          if (sizeInMB > 10) {
-            alert("파일의 용량이 너무 큽니다.");
+          const fileSize = file.size;
+          let maxSize = 10 * 1024 * 1024;
+          console.log("사이즈", fileSize);
+
+          if (fileSize > maxSize) {
+            alert("파일의 용량은 10MB 이하로 등록해야합니다.");
             return;
           }
 
