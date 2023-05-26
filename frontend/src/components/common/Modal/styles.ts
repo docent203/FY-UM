@@ -59,7 +59,7 @@ export const ModalTitle = styled.div`
     border-bottom: 1px solid ${grey[200]};
 
     span {
-      color: ${grey[500]}
+      color: ${grey[500]};
     }
   }
 `;
@@ -95,7 +95,7 @@ export const ModalBtn = styled.div`
   line-height: 25px;
   margin-top: 20px;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       opacity: 50%;
       transition: 0.5s;
@@ -113,7 +113,7 @@ export const CloseBtn = styled(CloseIc)`
   height: 15px;
   fill: ${grey[400]};
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${mainColor};

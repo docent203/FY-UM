@@ -28,7 +28,7 @@ export const LogoIcStyle = styled(LogoIc)<{ iconcolor: string }>`
   margin-top: 10px;
   fill: ${(props) => props.iconcolor};
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${pink[200]};
@@ -43,7 +43,7 @@ export const MenuIcStyle = styled(MenuIc)<{ iconcolor: string }>`
   margin-top: 15px;
   stroke: ${(props) => props.iconcolor};
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       stroke: ${pink[200]};

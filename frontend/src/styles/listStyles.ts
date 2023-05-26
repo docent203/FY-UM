@@ -216,7 +216,7 @@ export const GoPageBtn = styled.div`
   color: ${white};
   margin-right: 5px;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       color: ${pink[200]};
