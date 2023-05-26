@@ -9,7 +9,7 @@ export const DeleteIcStyle = styled(DeleteIc)`
   height: 27px;
   align-self: center;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${pink[200]};

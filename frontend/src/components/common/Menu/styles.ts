@@ -129,7 +129,7 @@ export const MenuListFontStyle = styled.div`
       font-size: 30px;
     }
 
-    @media (hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         cursor: pointer;
         color: ${mainColor};
@@ -145,7 +145,7 @@ export const CloseIcStyle = styled(CloseIc)`
   margin-right: 40px;
   margin-top: 15px;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${pink[200]};
