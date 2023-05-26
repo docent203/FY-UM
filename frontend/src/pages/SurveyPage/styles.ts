@@ -65,14 +65,8 @@ export const ArtworkImg = styled.img<artworkImgInfo>`
     props.choosed ? "brightness(100%)" : "brightness(40%)"};
   cursor: pointer;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
-      filter: brightness(100%);
-    }
-  }
-
-  @media (hover: none) {
-    &:active {
       filter: brightness(100%);
     }
   }

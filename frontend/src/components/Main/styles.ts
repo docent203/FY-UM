@@ -45,9 +45,11 @@ export const FontStyle = styled.div`
     align-items: center;
     justify-content: end;
 
-    &:hover {
-      cursor: pointer;
-      color: ${pink[200]};
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        cursor: pointer;
+        color: ${pink[200]};
+      }
     }
 
     @media (max-width: 768px) {

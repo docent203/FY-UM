@@ -29,8 +29,10 @@ export const PainterContainer = styled.div`
   height: 100%;
   filter: brightness(40%);
 
-  &:hover {
-    filter: brightness(100%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(100%);
+    }
   }
 
   @media (max-width: 768px) {
@@ -69,8 +71,10 @@ export const ArtTrendContainer = styled.div`
   height: 100%;
   filter: brightness(40%);
 
-  &:hover {
-    filter: brightness(100%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(100%);
+    }
   }
 
   @media (max-width: 768px) {
@@ -108,12 +112,14 @@ export const ThemeContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
-
   filter: brightness(40%);
-  &:hover {
-    filter: brightness(100%);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(100%);
+    }
   }
-  
+
   @media (max-width: 768px) {
     grid-column: 1/1;
     grid-row: 3/4;
