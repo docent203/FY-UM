@@ -24,8 +24,10 @@ export const MyGalleryContainer = styled.div`
   position: relative;
   filter: brightness(40%);
 
-  &:hover {
-    filter: brightness(100%);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(100%);
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -85,8 +87,11 @@ export const OtherGalleryContainer = styled.div`
   align-items: center;
   position: relative;
   filter: brightness(40%);
-  &:hover {
-    filter: brightness(100%);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      filter: brightness(100%);
+    }
   }
 
   @media screen and (max-width: 768px) {
