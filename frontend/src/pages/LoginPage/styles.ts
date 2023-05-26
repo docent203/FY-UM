@@ -67,8 +67,10 @@ export const KakaoBtn = styled.img.attrs({
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 
-  &:hover {
-    transform: scale(1.05);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   @media (max-width: 768px) {
