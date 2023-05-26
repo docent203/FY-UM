@@ -150,7 +150,7 @@ export const FontStyle = styled.div<{ isanimation?: string }>`
       position: static;
     }
 
-    @media (hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         cursor: pointer;
         color: ${pink[200]};
