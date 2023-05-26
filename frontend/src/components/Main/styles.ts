@@ -112,7 +112,7 @@ export const MainImgStyle = styled.img`
 
   transition: transform 0.2s ease-in-out;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       transform: scale(1.1);
     }
