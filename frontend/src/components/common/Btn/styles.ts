@@ -50,7 +50,7 @@ export const BtnStyle = styled.button<BtnStyleProps>`
     height: ${(props) => (props.height ? props.height + "px" : "40px")};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    @media (hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: ${pink[300]};
       }

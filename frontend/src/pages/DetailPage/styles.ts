@@ -167,7 +167,7 @@ export const SpeakerImg = styled(Speaker)`
   height: 30px;
   fill: ${white};
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${pink[200]};
@@ -186,7 +186,7 @@ export const MuteIcStyle = styled(MuteIc)`
   fill: ${white};
   top: 5vh;
 
-  @media (hover: hover) {
+  @media (hover: hover) and (pointer: fine) {
     &:hover {
       cursor: pointer;
       fill: ${pink[200]};
@@ -204,8 +204,10 @@ export const DescriptionBtn = styled.div`
   bottom: 10px;
   left: 30px;
 
-  &:hover {
-    cursor: pointer;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
